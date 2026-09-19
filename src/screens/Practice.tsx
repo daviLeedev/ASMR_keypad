@@ -181,7 +181,7 @@ function Lesson({
     if (!current || lock.current || pausedRef.current) return;
     lock.current = true;
     flushStudy(Date.now(), true);
-    playKey("enter", { ...settings, hapticsEnabled: false });
+    playKey("press", "enter", { ...settings, hapticsEnabled: false });
     const correct =
       !timedOut &&
       matchesAnswer(input, current.item.acceptedAnswers, {

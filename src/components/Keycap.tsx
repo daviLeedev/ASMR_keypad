@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Animated, {
   interpolateColor,
@@ -18,10 +18,16 @@ export interface KeycapProps {
   testID: string;
   flex?: number;
   disabled?: boolean;
+  glidePressed?: boolean;
+  touchManaged?: boolean;
   reducedMotion: boolean;
   theme: KeyboardTheme;
   onTrigger: () => void;
+  onRelease?: () => void;
   onVisualPress?: () => void;
+  onFrame?: (
+    frame: { x: number; y: number; width: number; height: number } | null,
+  ) => void;
 }
 export const keycapPressDelay = 0;
 
@@ -31,13 +37,19 @@ export function Keycap({
   testID,
   flex = 1,
   disabled = false,
+  glidePressed = false,
+  touchManaged = false,
   reducedMotion,
   theme,
   onTrigger,
+  onRelease,
   onVisualPress,
+  onFrame,
 }: KeycapProps) {
   const pressed = useSharedValue(0);
   const pressStarted = useRef(false);
+  const slot = useRef<View>(null);
+  const onFrameRef = useRef(onFrame);
   const topStyle = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
       pressed.value,
@@ -60,6 +72,35 @@ export function Keycap({
     opacity: reducedMotion ? 1 : 1 - pressed.value * 0.82,
   }));
 
+  useEffect(() => {
+    // Reanimated shared values are intentionally mutable UI-thread handles.
+    // eslint-disable-next-line react-hooks/immutability
+    pressed.value = withTiming(glidePressed ? 1 : 0, {
+      duration: reducedMotion
+        ? 0
+        : glidePressed
+          ? motion.pressMs
+          : motion.releaseMs,
+    });
+  }, [glidePressed, pressed, reducedMotion]);
+  useEffect(() => {
+    onFrameRef.current = onFrame;
+  }, [onFrame]);
+  useEffect(
+    () => () => {
+      onFrameRef.current?.(null);
+    },
+    [],
+  );
+
+  const reportFrame = () => {
+    requestAnimationFrame(() => {
+      slot.current?.measureInWindow((x, y, width, height) => {
+        onFrameRef.current?.({ x, y, width, height });
+      });
+    });
+  };
+
   const pressIn = () => {
     if (disabled) return;
     pressStarted.current = true;
@@ -68,8 +109,10 @@ export function Keycap({
     pressed.value = withTiming(1, {
       duration: reducedMotion ? 0 : motion.pressMs,
     });
-    onTrigger();
-    if (!reducedMotion) onVisualPress?.();
+    if (!touchManaged) {
+      onTrigger();
+      if (!reducedMotion) onVisualPress?.();
+    }
   };
   const press = () => {
     if (disabled) return;
@@ -80,14 +123,20 @@ export function Keycap({
     pressStarted.current = false;
   };
   const release = () => {
+    if (disabled) return;
     // eslint-disable-next-line react-hooks/immutability
     pressed.value = withTiming(0, {
       duration: reducedMotion ? 0 : motion.releaseMs,
     });
+    if (!touchManaged) onRelease?.();
   };
 
   return (
-    <View style={[styles.slot, { flex, opacity: disabled ? 0.58 : 1 }]}>
+    <View
+      ref={slot}
+      onLayout={reportFrame}
+      style={[styles.slot, { flex, opacity: disabled ? 0.58 : 1 }]}
+    >
       <View
         pointerEvents="none"
         style={[
@@ -103,6 +152,7 @@ export function Keycap({
         accessibilityRole="button"
         accessibilityLabel={accessibilityLabel}
         accessibilityState={{ disabled }}
+        aria-pressed={glidePressed}
         testID={testID}
         disabled={disabled}
         unstable_pressDelay={keycapPressDelay}

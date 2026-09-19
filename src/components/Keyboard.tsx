@@ -1,7 +1,20 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { AccessibilityInfo, StyleSheet, Text, View } from "react-native";
+import {
+  AccessibilityInfo,
+  type GestureResponderEvent,
+  type NativeTouchEvent,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { useTranslation } from "react-i18next";
-import { playKey, preloadTheme } from "../audio";
+import {
+  playKey,
+  preloadTheme,
+  type KeyCategory,
+  type KeyPhase,
+} from "../audio";
 import { getTheme, keyboardLayout, motion } from "../design-system/theme";
 import type { Settings } from "../state/model";
 import { Keycap } from "./Keycap";
@@ -23,6 +36,89 @@ const SHIFT: Record<string, string> = {
   ㅐ: "ㅒ",
   ㅔ: "ㅖ",
 };
+
+export class GlideTouchTracker {
+  private readonly touches = new Map<string | number, string | null>();
+
+  start(touchId: string | number, keyId: string | null): void {
+    this.touches.set(touchId, keyId);
+  }
+
+  move(
+    touchId: string | number,
+    keyId: string | null,
+  ): { entered: string | null; exited: string | null } {
+    if (!this.touches.has(touchId)) {
+      this.touches.set(touchId, keyId);
+      return { entered: keyId, exited: null };
+    }
+    const previous = this.touches.get(touchId) ?? null;
+    if (previous === keyId) return { entered: null, exited: null };
+    this.touches.set(touchId, keyId);
+    return { entered: keyId, exited: previous };
+  }
+
+  end(touchId: string | number): void {
+    this.touches.delete(touchId);
+  }
+
+  keyForTouch(touchId: string | number): string | null {
+    return this.touches.get(touchId) ?? null;
+  }
+
+  pressedKeys(): Set<string> {
+    return new Set(
+      [...this.touches.values()].filter(
+        (keyId): keyId is string => keyId !== null,
+      ),
+    );
+  }
+}
+
+export interface GlideKeyRegion {
+  id: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+interface GlideKeyTarget {
+  value: string;
+  row: number;
+  column: number;
+  columns: number;
+}
+
+const GLIDE_HYSTERESIS = 4;
+
+function containsPoint(
+  region: GlideKeyRegion,
+  x: number,
+  y: number,
+  inset = 0,
+): boolean {
+  return (
+    x >= region.x - inset &&
+    x <= region.x + region.width + inset &&
+    y >= region.y - inset &&
+    y <= region.y + region.height + inset
+  );
+}
+
+export function findGlideKey(
+  regions: readonly GlideKeyRegion[],
+  x: number,
+  y: number,
+  currentKey: string | null,
+): string | null {
+  if (currentKey) {
+    const current = regions.find((region) => region.id === currentKey);
+    if (current && containsPoint(current, x, y, GLIDE_HYSTERESIS))
+      return current.id;
+  }
+  return regions.find((region) => containsPoint(region, x, y))?.id ?? null;
+}
 
 export interface KeyboardProps {
   language: "en" | "ko";
@@ -54,6 +150,11 @@ export function Keyboard({
   const theme = getTheme(themeId);
   const eventId = useRef(0);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const glideTracker = useRef(new GlideTouchTracker());
+  const keyRegions = useRef(new Map<string, GlideKeyRegion>());
+  const [glidePressedKeys, setGlidePressedKeys] = useState<Set<string>>(
+    () => new Set(),
+  );
 
   useEffect(() => {
     void preloadTheme(themeId);
@@ -74,6 +175,12 @@ export function Keyboard({
     },
     [],
   );
+  useEffect(() => {
+    if (!disabled) return;
+    glideTracker.current = new GlideTouchTracker();
+    const timer = setTimeout(() => setGlidePressedKeys(new Set()), 0);
+    return () => clearTimeout(timer);
+  }, [disabled]);
 
   const reducedMotion = settings.reducedMotion || systemReducedMotion;
   const rows = useMemo(
@@ -89,19 +196,58 @@ export function Keyboard({
       ),
     [language, shift],
   );
-  const displayRows = sentence ? [...rows, [",", " ", ".", "?", "'"]] : rows;
+  const displayRows = useMemo(
+    () => (sentence ? [...rows, [",", " ", ".", "?", "'"]] : rows),
+    [rows, sentence],
+  );
+  const keyTargets = useMemo(() => {
+    const targets = new Map<string, GlideKeyTarget>();
+    displayRows.forEach((row, rowIndex) => {
+      const hasModifiers = rowIndex === 2;
+      const columns = row.length + (hasModifiers ? 2 : 0);
+      if (hasModifiers)
+        targets.set(`${rowIndex}:0`, {
+          value: "⇧",
+          row: rowIndex,
+          column: 0,
+          columns,
+        });
+      row.forEach((value, column) => {
+        const actualColumn = column + (hasModifiers ? 1 : 0);
+        targets.set(`${rowIndex}:${actualColumn}`, {
+          value,
+          row: rowIndex,
+          column: actualColumn,
+          columns,
+        });
+      });
+      if (hasModifiers)
+        targets.set(`${rowIndex}:${columns - 1}`, {
+          value: "⌫",
+          row: rowIndex,
+          column: columns - 1,
+          columns,
+        });
+    });
+    return targets;
+  }, [displayRows]);
 
+  const categoryFor = (value: string): KeyCategory =>
+    value === "⌫" ? "backspace" : value === " " ? "space" : "normal";
+  const sound = (phase: KeyPhase, value: string) =>
+    playKey(phase, categoryFor(value), settings);
   const hit = (value: string) => {
     if (disabled) return;
-    playKey(
-      value === "⌫" ? "backspace" : value === " " ? "space" : "normal",
-      settings,
-    );
+    sound("press", value);
     if (value === "⇧") setShift((current) => !current);
     else {
       onKey(value === "⌫" ? "BACKSPACE" : value);
       if (shift) setShift(false);
     }
+  };
+  const release = (value: string) => {
+    if (disabled) return;
+    sound("release", value);
   };
   const showFeedback = (
     value: string,
@@ -142,30 +288,95 @@ export function Keyboard({
       : value === " "
         ? "key-space"
         : `key-${value}`;
+  const keyAtTouch = (touch: NativeTouchEvent) =>
+    findGlideKey(
+      [...keyRegions.current.values()],
+      touch.pageX,
+      touch.pageY,
+      glideTracker.current.keyForTouch(touch.identifier),
+    );
+  const syncGlidePressedKeys = () =>
+    setGlidePressedKeys(glideTracker.current.pressedKeys());
+  const triggerGlideKey = (keyId: string) => {
+    const target = keyTargets.get(keyId);
+    if (!target) return;
+    hit(target.value);
+    showFeedback(target.value, target.row, target.column, target.columns);
+  };
+  const releaseGlideKey = (keyId: string) => {
+    const target = keyTargets.get(keyId);
+    if (target) release(target.value);
+  };
+  const startGlide = (event: GestureResponderEvent) => {
+    if (disabled) return;
+    for (const touch of event.nativeEvent.changedTouches) {
+      const startingKey = keyAtTouch(touch);
+      glideTracker.current.start(touch.identifier, startingKey);
+      if (Platform.OS !== "web" && startingKey) triggerGlideKey(startingKey);
+    }
+    syncGlidePressedKeys();
+  };
+  const moveGlide = (event: GestureResponderEvent) => {
+    if (disabled) return;
+    for (const touch of event.nativeEvent.changedTouches) {
+      const { entered, exited } = glideTracker.current.move(
+        touch.identifier,
+        keyAtTouch(touch),
+      );
+      if (exited) releaseGlideKey(exited);
+      if (entered) triggerGlideKey(entered);
+    }
+    syncGlidePressedKeys();
+  };
+  const endGlide = (event: GestureResponderEvent) => {
+    for (const touch of event.nativeEvent.changedTouches) {
+      const activeKey = glideTracker.current.keyForTouch(touch.identifier);
+      if (activeKey) releaseGlideKey(activeKey);
+      glideTracker.current.end(touch.identifier);
+    }
+    syncGlidePressedKeys();
+  };
   const renderKey = (
     value: string,
     row: number,
     column: number,
     columns: number,
     flex = 1,
-  ) => (
-    <Keycap
-      key={`${row}-${column}-${value}`}
-      label={value === " " ? t("space") : value}
-      accessibilityLabel={accessibilityLabel(value)}
-      testID={testID(value)}
-      flex={value === " " ? 6 : flex}
-      disabled={disabled}
-      reducedMotion={reducedMotion}
-      theme={theme}
-      onTrigger={() => hit(value)}
-      onVisualPress={() => showFeedback(value, row, column, columns)}
-    />
-  );
+  ) => {
+    const keyId = `${row}:${column}`;
+    return (
+      <Keycap
+        key={keyId}
+        label={value === " " ? t("space") : value}
+        accessibilityLabel={accessibilityLabel(value)}
+        testID={testID(value)}
+        flex={value === " " ? 6 : flex}
+        disabled={disabled}
+        glidePressed={!disabled && glidePressedKeys.has(keyId)}
+        touchManaged={Platform.OS !== "web"}
+        reducedMotion={reducedMotion}
+        theme={theme}
+        onTrigger={() => hit(value)}
+        onRelease={() => release(value)}
+        onVisualPress={() => showFeedback(value, row, column, columns)}
+        onFrame={(frame) => {
+          if (frame) keyRegions.current.set(keyId, { id: keyId, ...frame });
+          else keyRegions.current.delete(keyId);
+        }}
+      />
+    );
+  };
 
   return (
     <KeyboardDock theme={theme} height={height} bottomInset={bottomInset}>
-      <View style={styles.rows}>
+      <View
+        testID="keyboard-touch-surface"
+        onTouchStart={startGlide}
+        onTouchMove={moveGlide}
+        onTouchEnd={endGlide}
+        onTouchCancel={endGlide}
+        style={styles.rows}
+      >
         {displayRows.map((row, rowIndex) => {
           const hasModifiers = rowIndex === 2;
           const columns = row.length + (hasModifiers ? 2 : 0);
