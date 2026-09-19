@@ -4,7 +4,8 @@ Date: 2026-09-20
 
 ## Automated evidence
 
-The committed asset validator checks provenance and SHA-256, mono PCM WAV at
+The committed asset validator checks that every WAV has complete source/output
+provenance and matching SHA-256, mono PCM WAV at
 48 kHz/16-bit, leading silence, peak level, duration and required categories.
 The browser credit flow rejects external requests. Android/iOS export proves that
 Metro can bundle the assets; it does not prove physical-device latency or sound.
@@ -13,7 +14,7 @@ Metro can bundle the assets; it does not prove physical-device latency or sound.
 | --- | --- |
 | TypeScript | Passed, `tsc --noEmit` |
 | ESLint | Passed, 0 errors and 0 warnings |
-| Unit tests | 13 suites, 140 tests passed |
+| Unit tests | 13 suites, 141 tests passed |
 | Native component tests | 5 suites, 21 tests passed |
 | Audio asset validation | 7 physical packs passed; 1 declared legacy theme |
 | Playwright | 32 browser tests passed, including 8 redesign/audio flows |
