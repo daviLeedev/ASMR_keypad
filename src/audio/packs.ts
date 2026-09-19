@@ -2,6 +2,7 @@
 import type { SoundPack } from "./engine";
 export const soundPacks: Record<string, SoundPack> = {
   starter: {
+    press: {
     normal: [
       require("../../assets/audio/starter/normal_01.wav"),
       require("../../assets/audio/starter/normal_02.wav"),
@@ -13,9 +14,12 @@ export const soundPacks: Record<string, SoundPack> = {
       require("../../assets/audio/starter/space_02.wav"),
     ],
     enter: [require("../../assets/audio/starter/enter.wav")],
-    backspace: [require("../../assets/audio/starter/backspace.wav")],
+      backspace: [require("../../assets/audio/starter/backspace.wav")],
+    },
+    release: {},
   },
   clicky: {
+    press: {
     normal: [
       require("../../assets/audio/clicky/normal_01.wav"),
       require("../../assets/audio/clicky/normal_02.wav"),
@@ -27,9 +31,12 @@ export const soundPacks: Record<string, SoundPack> = {
       require("../../assets/audio/clicky/space_02.wav"),
     ],
     enter: [require("../../assets/audio/clicky/enter.wav")],
-    backspace: [require("../../assets/audio/clicky/backspace.wav")],
+      backspace: [require("../../assets/audio/clicky/backspace.wav")],
+    },
+    release: {},
   },
   creamy: {
+    press: {
     normal: [
       require("../../assets/audio/creamy/normal_01.wav"),
       require("../../assets/audio/creamy/normal_02.wav"),
@@ -41,9 +48,12 @@ export const soundPacks: Record<string, SoundPack> = {
       require("../../assets/audio/creamy/space_02.wav"),
     ],
     enter: [require("../../assets/audio/creamy/enter.wav")],
-    backspace: [require("../../assets/audio/creamy/backspace.wav")],
+      backspace: [require("../../assets/audio/creamy/backspace.wav")],
+    },
+    release: {},
   },
   thock: {
+    press: {
     normal: [
       require("../../assets/audio/thock/normal_01.wav"),
       require("../../assets/audio/thock/normal_02.wav"),
@@ -55,9 +65,12 @@ export const soundPacks: Record<string, SoundPack> = {
       require("../../assets/audio/thock/space_02.wav"),
     ],
     enter: [require("../../assets/audio/thock/enter.wav")],
-    backspace: [require("../../assets/audio/thock/backspace.wav")],
+      backspace: [require("../../assets/audio/thock/backspace.wav")],
+    },
+    release: {},
   },
   retro: {
+    press: {
     normal: [
       require("../../assets/audio/retro/normal_01.wav"),
       require("../../assets/audio/retro/normal_02.wav"),
@@ -69,9 +82,12 @@ export const soundPacks: Record<string, SoundPack> = {
       require("../../assets/audio/retro/space_02.wav"),
     ],
     enter: [require("../../assets/audio/retro/enter.wav")],
-    backspace: [require("../../assets/audio/retro/backspace.wav")],
+      backspace: [require("../../assets/audio/retro/backspace.wav")],
+    },
+    release: {},
   },
   silent: {
+    press: {
     normal: [
       require("../../assets/audio/silent/normal_01.wav"),
       require("../../assets/audio/silent/normal_02.wav"),
@@ -83,9 +99,12 @@ export const soundPacks: Record<string, SoundPack> = {
       require("../../assets/audio/silent/space_02.wav"),
     ],
     enter: [require("../../assets/audio/silent/enter.wav")],
-    backspace: [require("../../assets/audio/silent/backspace.wav")],
+      backspace: [require("../../assets/audio/silent/backspace.wav")],
+    },
+    release: {},
   },
   sky: {
+    press: {
     normal: [
       require("../../assets/audio/sky/normal_01.wav"),
       require("../../assets/audio/sky/normal_02.wav"),
@@ -97,9 +116,12 @@ export const soundPacks: Record<string, SoundPack> = {
       require("../../assets/audio/sky/space_02.wav"),
     ],
     enter: [require("../../assets/audio/sky/enter.wav")],
-    backspace: [require("../../assets/audio/sky/backspace.wav")],
+      backspace: [require("../../assets/audio/sky/backspace.wav")],
+    },
+    release: {},
   },
   midnight: {
+    press: {
     normal: [
       require("../../assets/audio/midnight/normal_01.wav"),
       require("../../assets/audio/midnight/normal_02.wav"),
@@ -111,6 +133,8 @@ export const soundPacks: Record<string, SoundPack> = {
       require("../../assets/audio/midnight/space_02.wav"),
     ],
     enter: [require("../../assets/audio/midnight/enter.wav")],
-    backspace: [require("../../assets/audio/midnight/backspace.wav")],
+      backspace: [require("../../assets/audio/midnight/backspace.wav")],
+    },
+    release: {},
   },
 };

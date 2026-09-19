@@ -1,9 +1,14 @@
 import { createAudioPlayer, preload, setAudioModeAsync } from "expo-audio";
 import * as Haptics from "expo-haptics";
-import { AudioEngine, type KeyCategory, type KeySettings } from "./engine";
+import {
+  AudioEngine,
+  type KeyCategory,
+  type KeyPhase,
+  type KeySettings,
+} from "./engine";
 import { soundPacks } from "./packs";
 
-export type { KeyCategory, KeySettings } from "./engine";
+export type { KeyCategory, KeyPhase, KeySettings } from "./engine";
 const engine = new AudioEngine({
   prepareSource: (source) => preload(source),
   createPlayer: (source) =>
@@ -29,8 +34,12 @@ export async function preloadTheme(themeId: string): Promise<void> {
   await engine.preload(soundPacks[resolved]);
   if (request === preloadRequest) activeTheme = resolved;
 }
-export function playKey(category: KeyCategory, settings: KeySettings): void {
-  engine.play(category, settings);
+export function playKey(
+  phase: KeyPhase,
+  category: KeyCategory,
+  settings: KeySettings,
+): void {
+  engine.trigger(phase, category, settings);
 }
 export function unloadAudio(): void {
   preloadRequest++;
