@@ -63,6 +63,8 @@
     "lint": "eslint .",
     "test": "jest --runInBand",
     "content:validate": "tsx scripts/validate-content.ts",
+    "audio:validate": "node scripts/validate-audio-assets.cjs",
+    "audio:process": "node scripts/process-keyboard-audio.cjs",
     "export:web": "expo export --platform web",
     "test:native": "jest --config jest.native.cjs --runInBand",
     "test:e2e": "playwright test",

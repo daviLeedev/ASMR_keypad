@@ -3,20 +3,27 @@ import type { SoundPack } from "./engine";
 export const soundPacks: Record<string, SoundPack> = {
   starter: {
     press: {
-    normal: [
-      require("../../assets/audio/starter/normal_01.wav"),
-      require("../../assets/audio/starter/normal_02.wav"),
-      require("../../assets/audio/starter/normal_03.wav"),
-      require("../../assets/audio/starter/normal_04.wav"),
-    ],
-    space: [
-      require("../../assets/audio/starter/space_01.wav"),
-      require("../../assets/audio/starter/space_02.wav"),
-    ],
-    enter: [require("../../assets/audio/starter/enter.wav")],
-      backspace: [require("../../assets/audio/starter/backspace.wav")],
+      normal: [
+        require("../../assets/audio/starter/press/normal_01.wav"),
+        require("../../assets/audio/starter/press/normal_02.wav"),
+        require("../../assets/audio/starter/press/normal_03.wav"),
+        require("../../assets/audio/starter/press/normal_04.wav"),
+        require("../../assets/audio/starter/press/normal_05.wav"),
+      ],
+      space: [require("../../assets/audio/starter/press/space_01.wav")],
+      enter: [require("../../assets/audio/starter/press/enter_01.wav")],
+      backspace: [
+        require("../../assets/audio/starter/press/backspace_01.wav"),
+      ],
     },
-    release: {},
+    release: {
+      normal: [require("../../assets/audio/starter/release/normal_01.wav")],
+      space: [require("../../assets/audio/starter/release/space_01.wav")],
+      enter: [require("../../assets/audio/starter/release/enter_01.wav")],
+      backspace: [
+        require("../../assets/audio/starter/release/backspace_01.wav"),
+      ],
+    },
   },
   clicky: {
     press: {
