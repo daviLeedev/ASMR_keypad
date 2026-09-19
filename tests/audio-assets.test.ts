@@ -96,6 +96,7 @@ describe("keyboard audio asset validation", () => {
         allowFiveNormalPress: true,
         files: files.map((file) => ({
           output: file,
+          sourceSha256: createHash("sha256").update(`source:${file}`).digest("hex"),
           sha256: createHash("sha256").update("sentinel").digest("hex"),
         })),
       }),
@@ -104,5 +105,49 @@ describe("keyboard audio asset validation", () => {
     await expect(
       validatePack(root, { probe: async () => validMetadata }),
     ).resolves.toEqual([]);
+  });
+
+  test("rejects unlisted outputs and provenance records without both hashes", async () => {
+    const files = [
+      ...Array.from({ length: 6 }, (_, index) =>
+        `press/normal_${String(index + 1).padStart(2, "0")}.wav`,
+      ),
+      "release/normal_01.wav",
+      "press/space_01.wav",
+      "release/space_01.wav",
+      "press/enter_01.wav",
+      "release/enter_01.wav",
+      "press/backspace_01.wav",
+      "release/backspace_01.wav",
+    ];
+    await Promise.all(files.map((file) => touch(root, file)));
+    await writeFile(
+      path.join(root, "provenance.json"),
+      JSON.stringify({
+        themeId: "starter",
+        source: "example/source",
+        sourceUrl: "https://example.com/source",
+        commit: "0123456789abcdef",
+        license: "MIT",
+        author: "Example author",
+        downloadedAt: "2026-09-19T00:00:00.000Z",
+        files: files.slice(0, -1).map((file, index) => ({
+          output: file,
+          sourceSha256:
+            index === 0
+              ? undefined
+              : createHash("sha256").update(`source:${file}`).digest("hex"),
+          sha256: createHash("sha256").update("sentinel").digest("hex"),
+        })),
+      }),
+    );
+
+    const issues = await validatePack(root, {
+      probe: async () => validMetadata,
+    });
+    const codes = issues.map((issue) => issue.code);
+
+    expect(codes).toContain("PROVENANCE_FILE_UNLISTED");
+    expect(codes).toContain("PROVENANCE_HASH_MISSING");
   });
 });

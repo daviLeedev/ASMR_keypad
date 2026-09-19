@@ -6,6 +6,7 @@ const { spawnSync } = require("node:child_process");
 
 const REQUIRED_CATEGORIES = ["normal", "space", "enter", "backspace"];
 const PHASES = ["press", "release"];
+const SHA256_PATTERN = /^[a-f0-9]{64}$/i;
 
 function run(command, args) {
   const result = spawnSync(command, args, { encoding: "utf8", shell: false });
@@ -180,11 +181,38 @@ async function validatePack(root, options = {}) {
     if (required.some((key) => !provenance[key])) {
       issues.push({ code: "PROVENANCE_MISSING", file: provenancePath });
     }
-    for (const record of provenance.files ?? []) {
-      const output = path.join(root, record.output);
-      if (!existsSync(output) || !statSync(output).isFile()) {
+    const records = Array.isArray(provenance.files) ? provenance.files : [];
+    const recordedOutputs = new Set(
+      records
+        .map((record) =>
+          typeof record.output === "string"
+            ? record.output.replaceAll("\\", "/")
+            : null,
+        )
+        .filter(Boolean),
+    );
+    for (const file of Object.values(filesByPhase).flat()) {
+      const relative = path.relative(root, file).replaceAll("\\", "/");
+      if (!recordedOutputs.has(relative)) {
+        issues.push({ code: "PROVENANCE_FILE_UNLISTED", file });
+      }
+    }
+    for (const record of records) {
+      const output = path.resolve(root, record.output ?? "");
+      const relative = path.relative(root, output).replaceAll("\\", "/");
+      const isInsideRoot = relative !== ".." && !relative.startsWith("../");
+      if (
+        !SHA256_PATTERN.test(record.sourceSha256 ?? "") ||
+        !SHA256_PATTERN.test(record.sha256 ?? "")
+      ) {
+        issues.push({ code: "PROVENANCE_HASH_MISSING", file: output });
+      }
+      if (!isInsideRoot || !existsSync(output) || !statSync(output).isFile()) {
         issues.push({ code: "PROVENANCE_FILE_MISSING", file: output });
-      } else if (record.sha256 && sha256(output) !== record.sha256) {
+      } else if (
+        SHA256_PATTERN.test(record.sha256 ?? "") &&
+        sha256(output) !== record.sha256
+      ) {
         issues.push({ code: "HASH_MISMATCH", file: output });
       }
     }
