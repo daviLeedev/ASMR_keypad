@@ -53,20 +53,20 @@ test("English tutorial, hidden recall, reward, collection, persistence and setti
   fs.mkdirSync(output, { recursive: true });
   await page.screenshot({ path: path.join(output, "result-375x667.png") });
   await page.getByRole("button", { name: "Meet your first keyboard" }).click();
-  await expect(page.getByTestId("theme-preview-keyboard")).toBeVisible();
+  await expect(page.getByTestId("theme-starter")).toBeVisible();
   await page.getByTestId("theme-creamy").click();
-  await expect(page.getByText("Creamy", { exact: true }).first()).toBeVisible();
-  await page
-    .getByText("Keyboards", { exact: true })
-    .first()
-    .scrollIntoViewIfNeeded();
+  await expect(page.getByTestId("theme-preview-keyboard")).toBeVisible();
+  await expect(
+    page.getByText("Creamy", { exact: true }).filter({ visible: true }),
+  ).toBeVisible();
   await page.screenshot({ path: path.join(output, "collection-375x667.png") });
+  await page.getByRole("button", { name: "Back", exact: true }).click();
   await page.getByRole("button", { name: "Make it a daily rhythm" }).click();
-  await expect(page.getByText("Find your rhythm")).toBeVisible();
+  await expect(page.getByTestId("start-learning")).toBeVisible();
   await expect(page.getByTestId("daily-progress")).toBeVisible();
   await expect(page.getByTestId("start-learning")).toBeVisible();
-  await expect(page.getByTestId("mode-GUIDED")).toBeVisible();
-  await expect(page.getByTestId("mode-RECALL")).toBeVisible();
+  await expect(page.getByTestId("mode-GUIDED")).toHaveCount(0);
+  await expect(page.getByTestId("nav-play")).toBeVisible();
   const startBox = await page.getByTestId("start-learning").boundingBox();
   expect(startBox).not.toBeNull();
   expect(startBox!.y + startBox!.height).toBeLessThanOrEqual(
@@ -74,7 +74,7 @@ test("English tutorial, hidden recall, reward, collection, persistence and setti
   );
   await page.screenshot({ path: path.join(output, "home-375x667.png") });
   await page.reload();
-  await expect(page.getByText("Find your rhythm")).toBeVisible();
+  await expect(page.getByTestId("start-learning")).toBeVisible();
   await page.getByRole("button", { name: "Settings", exact: true }).click();
   await expect(page.getByText("Your daily goal")).toBeVisible();
   const sound = page.getByRole("switch", { name: "Sound" });
@@ -158,7 +158,9 @@ test("offline recall unlocks speed and rain; full 60-second round completes", as
   await homeFromResult(page, true);
   await context.setOffline(true);
   for (let run = 0; run < 2; run++) {
-    await page.getByTestId("mode-RECALL").click();
+    await page.getByTestId("nav-play").filter({ visible: true }).click();
+    await page.getByTestId("open-learning").filter({ visible: true }).click();
+    await page.getByTestId("mode-RECALL").filter({ visible: true }).click();
     for (let i = 0; i < 2; i++) {
       const prompt = await page.getByTestId("prompt").innerText();
       await expect(page.getByTestId("ghost-suffix")).toHaveCount(0);
@@ -167,6 +169,8 @@ test("offline recall unlocks speed and rain; full 60-second round completes", as
     }
     await homeFromResult(page);
   }
+  await page.getByTestId("nav-play").filter({ visible: true }).click();
+  await page.getByTestId("open-arcade").filter({ visible: true }).click();
   await page.getByTestId("mode-SPEED").click();
   await expect(page.getByTestId("ghost-suffix")).toHaveCount(0);
   for (let i = 0; i < 2; i++) {
@@ -175,7 +179,9 @@ test("offline recall unlocks speed and rain; full 60-second round completes", as
     await page.getByTestId("next-answer").click();
   }
   await homeFromResult(page);
-  await page.getByTestId("mode-RAIN").click();
+  await page.getByTestId("nav-play").filter({ visible: true }).click();
+  await page.getByTestId("open-arcade").filter({ visible: true }).click();
+  await page.getByTestId("mode-RAIN").filter({ visible: true }).click();
   await fit(page);
   await page.clock.install();
   await page.getByTestId("start-rain").click();
@@ -198,6 +204,8 @@ test("sentences are reachable with space and punctuation at the smallest size", 
 }) => {
   await completeTutorial(page);
   await homeFromResult(page, true);
+  await page.getByTestId("nav-play").click();
+  await page.getByTestId("open-learning").click();
   await page.getByTestId("sentence-mode").click();
   await page.getByTestId("mode-GUIDED").click();
   await fit(page);

@@ -16,6 +16,8 @@ import { seedItems } from "../src/content";
 import { averageSessionWpm } from "../src/state/model";
 import { getAdProvider } from "../src/services";
 import { track } from "../src/analytics";
+import { KeyboardExhibit } from "../src/components/KeyboardExhibit";
+import { getTheme } from "../src/design-system/theme";
 export default function Result() {
   const result = useApp((s) => s.lastResult),
     p = useApp((s) => s.profile),
@@ -73,7 +75,15 @@ export default function Result() {
         <Text style={styles.title}>{t("result")}</Text>
         <Label muted>{t("resultBody")}</Label>
       </View>
-      <Card style={{ padding: 22, gap: 16 }}>
+      <Card
+        style={{
+          padding: 22,
+          gap: 16,
+          borderWidth: 1,
+          borderColor: "#D5E5F5",
+          shadowOpacity: 0,
+        }}
+      >
         <View style={styles.spread}>
           <Text
             testID="result-rank"
@@ -138,10 +148,21 @@ export default function Result() {
             testID="result-home"
             secondary
             title={t("home")}
-            onPress={() => router.replace("/home")}
+            onPress={() => router.dismissTo("/home")}
+          />
+          <Button
+            secondary
+            title={t("explore")}
+            onPress={() => router.replace("/collection")}
           />
         </>
       )}
+      <View style={{ gap: 4 }}>
+        <KeyboardExhibit theme={getTheme(p.selectedThemeId)} compact />
+        <Label muted style={{ textAlign: "center", fontSize: 12 }}>
+          {t("collectionReward")}
+        </Label>
+      </View>
       <Button
         secondary
         title={t("rewardAd")}

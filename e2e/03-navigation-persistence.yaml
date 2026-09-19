@@ -10,7 +10,8 @@ tags:
 - assertNotVisible:
     id: confirm-language
 - openLink: keylingo://home
-- assertVisible: YOUR DAILY RHYTHM
+- assertVisible:
+    id: start-learning
 - takeScreenshot: home-after-restart
 - openLink: keylingo://collection
 - assertVisible: Keyboards

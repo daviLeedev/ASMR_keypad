@@ -1,4 +1,5 @@
 const { createHash } = require("node:crypto");
+const { Buffer } = require("node:buffer");
 const { existsSync, readdirSync, readFileSync, statSync } = require("node:fs");
 const path = require("node:path");
 const { spawnSync } = require("node:child_process");

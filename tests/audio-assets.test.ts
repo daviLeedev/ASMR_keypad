@@ -3,11 +3,13 @@ import { createHash } from "node:crypto";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
+// CommonJS is intentional: the production validator is also a directly runnable CLI.
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { validatePack } = require("../scripts/validate-audio-assets.cjs") as {
   validatePack: (
     root: string,
     options?: { probe?: (file: string) => Promise<AudioMetadata> },
-  ) => Promise<Array<{ code: string; file?: string }>>;
+  ) => Promise<{ code: string; file?: string }[]>;
 };
 
 interface AudioMetadata {

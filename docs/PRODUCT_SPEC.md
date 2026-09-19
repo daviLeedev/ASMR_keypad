@@ -56,14 +56,18 @@ Flow:
 
 ## Home information hierarchy
 
+The 2026-09-19 redesign in UX_UI_SPEC.md supersedes the former flat shortcuts:
+Home shows one recommended session and compact daily progress. Mode/format choices
+live under Play → Learning/Arcade. Collection detail and Progress are dedicated areas.
+
 Priority order:
 
 1. Continue today's learning.
 2. Daily Goal progress.
 3. Review due count.
 4. Streak / level.
-5. Speed / Word Rain shortcuts.
-6. Collection.
+5. Equipped keyboard identity, linking to its detail.
+6. Persistent navigation to Play, Keyboards and Progress.
 
 Do not overload Home with events, banners, or shop promotions in MVP.
 

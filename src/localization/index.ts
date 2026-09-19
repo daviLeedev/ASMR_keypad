@@ -1,5 +1,6 @@
 import { createInstance } from "i18next";
 import { initReactI18next } from "react-i18next";
+import { redesignEn, redesignKo } from "./redesign";
 const i18n = createInstance();
 const en = {
   tagline: "A little practice. A satisfying rhythm.",
@@ -267,7 +268,10 @@ const ko: Record<keyof typeof en, string> = {
     "Quiet Cloud는 라이선스가 확인된 저소음 녹음을 확보할 때까지 기존 KeyLingo 소리를 사용해요.",
 };
 void i18n.use(initReactI18next).init({
-  resources: { en: { translation: en }, ko: { translation: ko } },
+  resources: {
+    en: { translation: { ...en, ...redesignEn } },
+    ko: { translation: { ...ko, ...redesignKo } },
+  },
   lng: "en",
   fallbackLng: "en",
   interpolation: { escapeValue: false },

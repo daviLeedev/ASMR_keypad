@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import {
   Pressable,
   Text,
   View,
   ScrollView,
   StyleSheet,
+  Animated,
+  Easing,
+  Platform,
   type ViewStyle,
   type StyleProp,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { router } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { colors as c } from "../design-system/theme";
+import { Icon, type IconName } from "./Icon";
+import { useReducedMotion } from "./useReducedMotion";
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 export function Label({
   children,
   muted = false,
@@ -42,24 +48,55 @@ export function Button({
   disabled?: boolean;
   testID?: string;
 }) {
+  const reducedMotion = useReducedMotion();
+  const [press] = useState(() => new Animated.Value(0));
+  const animatePress = (value: number) =>
+    Animated.timing(press, {
+      toValue: value,
+      duration: reducedMotion ? 0 : value ? 80 : 160,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: true,
+    }).start();
   return (
-    <Pressable
+    <AnimatedPressable
       accessibilityRole="button"
       accessibilityLabel={title}
+      accessibilityState={{ disabled }}
       testID={testID}
       onPress={onPress}
       disabled={disabled}
-      style={({ pressed }) => [
+      onPressIn={() => animatePress(1)}
+      onPressOut={() => animatePress(0)}
+      style={[
         styles.button,
         secondary && styles.secondaryButton,
         disabled && { opacity: 0.45 },
-        pressed && styles.buttonPressed,
+        {
+          transform: [
+            {
+              scale: reducedMotion
+                ? 1
+                : press.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [1, 0.98],
+                  }),
+            },
+            {
+              translateY: reducedMotion
+                ? 0
+                : press.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0, 2],
+                  }),
+            },
+          ],
+        },
       ]}
     >
       <Text style={[styles.buttonText, secondary && { color: c.navy }]}>
         {title}
       </Text>
-    </Pressable>
+    </AnimatedPressable>
   );
 }
 export function Card({
@@ -93,23 +130,69 @@ export function ProgressRail({
 export function Screen({
   children,
   scroll = true,
+  active,
+  compact = false,
 }: {
   children: React.ReactNode;
   scroll?: boolean;
+  active?: "home" | "play" | "collection" | "progress";
+  compact?: boolean;
 }) {
+  const reducedMotion = useReducedMotion();
+  const [entrance] = useState(() => new Animated.Value(1));
+  useFocusEffect(
+    useCallback(() => {
+      if (Platform.OS !== "web" || reducedMotion) {
+        entrance.setValue(1);
+        return;
+      }
+      entrance.setValue(0);
+      const animation = Animated.timing(entrance, {
+        toValue: 1,
+        duration: active ? 180 : 240,
+        easing: Easing.out(Easing.cubic),
+        useNativeDriver: true,
+      });
+      animation.start();
+      return () => animation.stop();
+    }, [active, entrance, reducedMotion]),
+  );
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.container}>
-        {scroll ? (
-          <ScrollView
-            contentContainerStyle={styles.content}
-            showsVerticalScrollIndicator={false}
-          >
-            {children}
-          </ScrollView>
-        ) : (
-          <View style={[styles.content, { flex: 1 }]}>{children}</View>
-        )}
+        <Animated.View
+          testID="screen-content"
+          style={{
+            flex: 1,
+            opacity: entrance,
+            transform: [
+              {
+                translateY:
+                  active || reducedMotion
+                    ? 0
+                    : entrance.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [10, 0],
+                      }),
+              },
+            ],
+          }}
+        >
+          {scroll ? (
+            <ScrollView
+              contentContainerStyle={[
+                styles.content,
+                compact && { gap: 12, paddingBottom: 14 },
+              ]}
+              showsVerticalScrollIndicator={false}
+            >
+              {children}
+            </ScrollView>
+          ) : (
+            <View style={[styles.content, { flex: 1 }]}>{children}</View>
+          )}
+        </Animated.View>
+        {active && <Nav active={active} />}
       </View>
     </SafeAreaView>
   );
@@ -118,10 +201,12 @@ export function Header({
   title,
   back = false,
   right,
+  parent = "/home",
 }: {
   title: string;
   back?: boolean;
   right?: React.ReactNode;
+  parent?: string;
 }) {
   const { t } = useTranslation();
   return (
@@ -130,10 +215,12 @@ export function Header({
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={t("back")}
-          onPress={() => router.replace("/home")}
+          onPress={() =>
+            router.canGoBack() ? router.back() : router.replace(parent)
+          }
           style={styles.back}
         >
-          <Text style={styles.backText}>‹</Text>
+          <Icon name="back" size={23} />
         </Pressable>
       )}
       <Text style={styles.brand}>{title}</Text>
@@ -145,37 +232,55 @@ export function Header({
 export function Nav({
   active,
 }: {
-  active: "home" | "collection" | "settings";
+  active: "home" | "play" | "collection" | "progress";
 }) {
   const { t } = useTranslation();
   return (
-    <View style={styles.nav}>
-      {(["home", "collection", "settings"] as const).map((route) => (
-        <Pressable
-          key={route}
-          accessibilityRole="button"
-          accessibilityLabel={t(route)}
-          onPress={() => router.replace(`/${route}`)}
-          style={[styles.navItem, active === route && styles.navActive]}
-        >
-          <Text
-            style={{
-              color: active === route ? c.navy : c.secondary,
-              fontWeight: active === route ? "700" : "500",
-              fontSize: 13,
-            }}
+    <View testID="bottom-navigation" style={styles.nav}>
+      {(["home", "play", "collection", "progress"] as const).map(
+        (route, index) => (
+          <Pressable
+            key={route}
+            accessibilityRole="button"
+            accessibilityLabel={t(route === "progress" ? "journal" : route)}
+            accessibilityState={{ selected: active === route }}
+            testID={`nav-${route}`}
+            onPress={() => router.navigate(`/${route}`)}
+            style={({ pressed }) => [
+              styles.navItem,
+              pressed && { opacity: 0.65 },
+            ]}
           >
-            {t(route)}
-          </Text>
-        </Pressable>
-      ))}
+            <View
+              style={[styles.navIcon, active === route && styles.navActive]}
+            >
+              <Icon
+                name={
+                  (["home", "play", "keyboard", "chart"] as IconName[])[index]
+                }
+                color={active === route ? c.navy : c.secondary}
+                size={22}
+              />
+            </View>
+            <Text
+              style={{
+                color: active === route ? c.navy : c.secondary,
+                fontWeight: active === route ? "700" : "500",
+                fontSize: 11,
+              }}
+            >
+              {t(route === "progress" ? "journal" : route)}
+            </Text>
+          </Pressable>
+        ),
+      )}
     </View>
   );
 }
 export const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: c.background },
+  safe: { flex: 1, backgroundColor: c.surface },
   container: { flex: 1, width: "100%", maxWidth: 560, alignSelf: "center" },
-  content: { paddingHorizontal: 22, paddingBottom: 20, gap: 18 },
+  content: { paddingHorizontal: 24, paddingBottom: 28, gap: 22 },
   text: { color: c.navy, fontSize: 15, lineHeight: 23 },
   muted: { color: c.secondary },
   title: {
@@ -199,7 +304,7 @@ export const styles = StyleSheet.create({
     gap: 12,
     shadowColor: "#153975",
     shadowOffset: { width: 0, height: 7 },
-    shadowOpacity: 0.08,
+    shadowOpacity: 0.03,
     shadowRadius: 18,
     elevation: 3,
   },
@@ -242,7 +347,14 @@ export const styles = StyleSheet.create({
     fontWeight: "800",
     letterSpacing: -0.6,
   },
-  back: { width: 32, height: 44, justifyContent: "center" },
+  back: {
+    width: 44,
+    height: 44,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 14,
+    backgroundColor: c.background,
+  },
   backText: { fontSize: 34, color: c.navy },
   row: { flexDirection: "row", alignItems: "center", gap: 12 },
   spread: {
@@ -253,23 +365,29 @@ export const styles = StyleSheet.create({
   },
   nav: {
     flexDirection: "row",
-    padding: 6,
-    backgroundColor: "#EAF2FA",
-    borderRadius: 17,
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+    backgroundColor: c.surface,
+    borderTopWidth: 1,
+    borderTopColor: c.border,
     gap: 4,
   },
   navItem: {
     flex: 1,
-    paddingVertical: 14,
+    paddingVertical: 4,
+    gap: 4,
     alignItems: "center",
     borderRadius: 12,
   },
+  navIcon: {
+    width: 52,
+    height: 32,
+    borderRadius: 16,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   navActive: {
-    backgroundColor: "#FFFFFF",
-    shadowColor: "#153975",
-    shadowOpacity: 0.09,
-    shadowRadius: 5,
-    elevation: 2,
+    backgroundColor: "#E3F2FF",
   },
   progressTrack: {
     height: 9,

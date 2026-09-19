@@ -9,7 +9,6 @@ import {
   Label,
   Card,
   Button,
-  Nav,
   styles,
 } from "../src/components/ui";
 import { useApp } from "../src/state/store";
@@ -90,7 +89,7 @@ export default function Settings() {
   };
   return (
     <Screen>
-      <Header title={t("settings")} />
+      <Header title={t("settings")} back parent="/progress" />
       <Card>
         {(["soundEnabled", "hapticsEnabled", "reducedMotion"] as const).map(
           (key, i) => (
@@ -249,7 +248,6 @@ export default function Settings() {
         />
       </Card>
       {message && <Label>{message}</Label>}
-      <Nav active="settings" />
     </Screen>
   );
 }

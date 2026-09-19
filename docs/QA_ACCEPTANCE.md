@@ -76,16 +76,22 @@ Unit/integration tests must cover:
 
 ## 8. Audio / haptics
 
-- [ ] Active sound pack preloads.
-- [ ] Rapid key presses can overlap sound correctly.
-- [ ] Normal keys randomize among sample variants.
-- [ ] Space/backspace categories route correctly.
-- [ ] Sound mute works.
-- [ ] Volume control works.
-- [ ] Haptic toggle works.
-- [ ] Missing audio/haptic capability fails gracefully.
+- [x] Active sound pack preloads without creating players inside a key event.
+- [x] Rapid key presses rotate through overlapping player voices.
+- [x] Normal keys use every shuffle-bag variant before repeating.
+- [x] Press and release route to independent pools.
+- [x] Space/backspace categories route correctly.
+- [x] Glide releases the previous key before pressing the next key.
+- [x] Cancel and two simultaneous pointers have independent release lifecycles.
+- [x] Sound mute and bounded volume work.
+- [x] Haptics fire on press only and respect the toggle.
+- [x] Missing release samples and audio/haptic failures fail gracefully.
+- [x] Seven physical packs pass format, provenance, duration, peak, silence and hash validation.
+- [x] Audio credits are bundled and open without an external request.
+- [ ] Android and iPhone onset, speaker/headphone character and clipping are checked on hardware.
 
-Physical-device perceived latency must be listed in release checklist as a manual QA item.
+Physical-device protocol and results are tracked in [AUDIO_QA.md](AUDIO_QA.md).
+Static bundle export is not device certification.
 
 ## 9. Economy / collection
 
@@ -169,3 +175,18 @@ Must pass:
 - [ ] release checklist exists
 
 Never report a build/test as passed unless it actually ran successfully.
+
+## 16. UI architecture redesign (2026-09-19)
+
+Revision-specific evidence is recorded in [UI_REDESIGN_QA.md](UI_REDESIGN_QA.md).
+The checklist above remains the full release checklist, not a claim that native
+device and external-provider checks have run.
+
+- [x] Home contains one recommended session action, with no flat mode menu.
+- [x] Learning and Arcade have dedicated selection routes.
+- [x] Collection uses full-width exhibits and dedicated keyboard trial/details.
+- [x] Unlock gates and equipped selection persist through reload.
+- [x] Four primary destinations use navigation outside scrolling content.
+- [x] Both languages captured at the three target mobile sizes.
+- [x] Unit, native component and browser regression tests pass.
+- [ ] Physical-device interaction, safe-area and accessibility release checks.

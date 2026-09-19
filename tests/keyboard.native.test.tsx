@@ -30,7 +30,7 @@ jest.mock("react-native-reanimated", () => {
     withTiming: (value: number) => value,
   };
 });
-const audioEvents: Array<["press" | "release", string]> = [];
+const audioEvents: ["press" | "release", string][] = [];
 jest.mock("../src/audio", () => ({
   preloadTheme: async () => {},
   playKey: (phase: "press" | "release", category: string) =>

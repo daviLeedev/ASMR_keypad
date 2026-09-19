@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react-native";
+import { act, fireEvent, render, screen } from "@testing-library/react-native";
 import { seedItems } from "../src/content";
 import { createProfile, type SessionSummary } from "../src/state/model";
 import Result from "../app/result";
@@ -38,7 +38,11 @@ const mockResult: SessionSummary = {
 const mockState = { lastResult: mockResult, profile: mockProfile };
 
 jest.mock("expo-router", () => ({
-  router: { replace: (...args: unknown[]) => mockReplace(...args) },
+  useFocusEffect: jest.fn(),
+  router: {
+    replace: (...args: unknown[]) => mockReplace(...args),
+    dismissTo: (...args: unknown[]) => mockReplace(...args),
+  },
 }));
 jest.mock("../src/state/store", () => ({
   useApp: (selector: (state: typeof mockState) => unknown) =>
@@ -49,8 +53,11 @@ jest.mock("../src/services", () => ({
 }));
 jest.mock("../src/analytics", () => ({ track: jest.fn() }));
 
-test("sentence results show WPM and separate retry from home", () => {
+test("sentence results show WPM and separate retry from home", async () => {
   render(<Result />);
+  await act(async () => {
+    await Promise.resolve();
+  });
 
   expect(screen.getByTestId("result-wpm").props.children).toEqual([32, " WPM"]);
   fireEvent.press(screen.getByTestId("retry-session"));

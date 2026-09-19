@@ -1,146 +1,74 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, Pressable } from "react-native";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import {
   Screen,
-  Header,
   Label,
-  Card,
   Button,
-  Nav,
   ProgressRail,
   styles,
 } from "../src/components/ui";
+import { ShellHeader, PageIntro } from "../src/components/Shell";
+import { KeyboardExhibit } from "../src/components/KeyboardExhibit";
 import { useApp } from "../src/state/store";
-import { localDateKey, levelForXp } from "../src/domain";
-import { colors } from "../src/design-system/theme";
-import { selectLesson } from "../src/state/model";
+import { localDateKey } from "../src/domain";
+import { getTheme } from "../src/design-system/theme";
+import { seedItems } from "../src/content";
 export default function Home() {
-  const [kind, setKind] = useState<"WORD" | "SENTENCE">("WORD");
   const p = useApp((s) => s.profile),
     { t } = useTranslation();
-  const today = p.habit.daily[localDateKey(new Date())],
-    seconds = today?.activeStudySeconds ?? 0,
-    goal = p.settings.dailyGoalMinutes * 60;
-  const due = Object.values(p.mastery).filter(
-    (m) =>
+  const seconds =
+    p.habit.daily[localDateKey(new Date())]?.activeStudySeconds ?? 0;
+  const goal = p.settings.dailyGoalMinutes * 60,
+    theme = getTheme(p.selectedThemeId);
+  const due = seedItems.some((item) => {
+    const m = p.mastery[item.id];
+    return (
+      item.targetLanguage === p.settings.studyLanguage &&
+      item.kind === "WORD" &&
+      m &&
       m.stage !== "NEW" &&
-      (!m.nextReviewAt || new Date(m.nextReviewAt) <= new Date()),
-  ).length;
+      (!m.nextReviewAt || new Date(m.nextReviewAt) <= new Date())
+    );
+  });
   return (
-    <Screen>
-      <Header
-        title="KeyLingo"
-        right={<Text style={styles.badge}>{p.economy.balance} ◇</Text>}
-      />
-      <Card style={{ backgroundColor: "#E5F3FF", padding: 22, gap: 15 }}>
-        <View style={{ gap: 6 }}>
-          <Text style={styles.eyebrow}>{t("today")}</Text>
-          <Text style={styles.title}>{t("continueLearning")}</Text>
-          <Label muted>{t("homeBody")}</Label>
-        </View>
+    <Screen active="home" compact>
+      <ShellHeader />
+      <PageIntro eyebrow={t("playground")} title={t("homeTitle")} />
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`${theme.name} · ${t("details")}`}
+        onPress={() => router.push(`/keyboard/${theme.id}`)}
+        style={{ gap: 3 }}
+      >
+        <KeyboardExhibit theme={theme} compact />
         <View style={styles.spread}>
-          <Label>{t("daily")}</Label>
-          <Label style={{ fontWeight: "700" }}>
+          <Text style={styles.eyebrow}>{t("yourKeyboard")}</Text>
+          <Label style={{ fontSize: 12 }}>{theme.name} ↗</Label>
+        </View>
+      </Pressable>
+      <View style={{ gap: 12 }}>
+        <Button
+          testID="start-learning"
+          title={t("start")}
+          onPress={() =>
+            router.push(`/practice?mode=${due ? "RECALL" : "GUIDED"}&kind=WORD`)
+          }
+        />
+      </View>
+      <View style={{ gap: 9, paddingVertical: 4 }}>
+        <View style={styles.spread}>
+          <Label muted style={{ fontSize: 12 }}>
+            {t("daily")}
+          </Label>
+          <Label style={{ fontSize: 12 }}>
             {Math.floor(seconds / 60)} / {p.settings.dailyGoalMinutes}{" "}
-            {t("minutes")}
+            {t("minutes")} · {p.habit.streak.currentStreak} {t("streak")}
           </Label>
         </View>
         <ProgressRail value={seconds / goal} testID="daily-progress" />
-        <View style={styles.spread}>
-          <Label muted style={{ fontSize: 12 }}>
-            {p.habit.streak.currentStreak} {t("streak")}
-          </Label>
-          <Label muted style={{ fontSize: 12 }}>
-            {t("level")} {levelForXp(p.xp)} · {p.xp} XP
-          </Label>
-        </View>
-        <Button
-          title={t("start")}
-          testID="start-learning"
-          onPress={() => router.replace(`/practice?mode=GUIDED&kind=${kind}`)}
-        />
-      </Card>
-      <View style={styles.spread}>
-        <Text style={styles.subtitle}>{t("practice")}</Text>
-        <Label muted style={{ fontSize: 12 }}>
-          {due} {t("due")}
-        </Label>
       </View>
-      <View style={styles.row}>
-        <View style={{ flex: 1 }}>
-          <Button
-            title={t("vocabulary")}
-            secondary={kind !== "WORD"}
-            onPress={() => setKind("WORD")}
-          />
-        </View>
-        <View style={{ flex: 1 }}>
-          <Button
-            testID="sentence-mode"
-            title={t("sentence")}
-            secondary={kind !== "SENTENCE"}
-            onPress={() => setKind("SENTENCE")}
-          />
-        </View>
-      </View>
-      {(
-        [
-          { mode: "GUIDED", title: "learn", body: "learnBody", mark: "Aa" },
-          { mode: "RECALL", title: "review", body: "reviewBody", mark: "↺" },
-          { mode: "SPEED", title: "speed", body: "speedBody", mark: "↗" },
-          { mode: "RAIN", title: "rain", body: "rainBody", mark: "≋" },
-        ] as const
-      ).map((item) => (
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={t(item.title)}
-          testID={`mode-${item.mode}`}
-          key={item.mode}
-          onPress={() =>
-            router.replace(
-              `/practice?mode=${item.mode}&kind=${item.mode === "RAIN" ? "WORD" : kind}`,
-            )
-          }
-          style={[styles.card, styles.row, { padding: 15 }]}
-        >
-          <View
-            style={{
-              height: 44,
-              width: 44,
-              borderRadius: 12,
-              backgroundColor: "#E9F4FF",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 22,
-                fontWeight: "600",
-                color: colors.primaryStrong,
-              }}
-            >
-              {item.mark}
-            </Text>
-          </View>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.subtitle}>{t(item.title)}</Text>
-            <Label muted style={{ fontSize: 12 }}>
-              {t(item.body)}
-            </Label>
-          </View>
-          <Label muted>
-            {item.mode !== "GUIDED" &&
-            !selectLesson(p, item.mode, item.mode === "RAIN" ? "WORD" : kind)
-              .length
-              ? "○"
-              : "›"}
-          </Label>
-        </Pressable>
-      ))}
-      <Nav active="home" />
     </Screen>
   );
 }

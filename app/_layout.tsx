@@ -10,9 +10,11 @@ import { Screen, Label, Button } from "../src/components/ui";
 import { subscribeReminderOpen } from "../src/services";
 import { initializeObservability } from "../src/analytics/bootstrap";
 import { AppErrorBoundary } from "../src/components/AppErrorBoundary";
+import { useReducedMotion } from "../src/components/useReducedMotion";
 initializeObservability();
 const query = new QueryClient({ defaultOptions: { queries: { retry: 1 } } });
 export default function Root() {
+  const reducedMotion = useReducedMotion();
   const ready = useApp((s) => s.ready),
     loadError = useApp((s) => s.loadError),
     saveError = useApp((s) => s.saveError),
@@ -43,8 +45,30 @@ export default function Root() {
           ) : (
             <>
               <Stack
-                screenOptions={{ headerShown: false, animation: "none" }}
-              />
+                screenOptions={{
+                  headerShown: false,
+                  animation: reducedMotion ? "none" : "slide_from_right",
+                  contentStyle: { backgroundColor: "#FFFFFF" },
+                }}
+              >
+                {["home", "play", "collection", "progress"].map((name) => (
+                  <Stack.Screen
+                    key={name}
+                    name={name}
+                    options={{
+                      animation: reducedMotion ? "none" : "fade",
+                      animationDuration: 180,
+                    }}
+                  />
+                ))}
+                <Stack.Screen
+                  name="result"
+                  options={{
+                    animation: reducedMotion ? "none" : "fade_from_bottom",
+                    animationDuration: 240,
+                  }}
+                />
+              </Stack>
               {saveError && (
                 <Button
                   title={t("storageError")}
