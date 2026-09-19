@@ -1,0 +1,26 @@
+appId: com.keylingo.app
+name: Completed tutorial persists across app restart and routes open
+tags:
+  - smoke
+  - persistence
+---
+- runFlow: 02-tutorial-korean.yaml
+- stopApp
+- launchApp
+- assertNotVisible:
+    id: confirm-language
+- openLink: keylingo://home
+- assertVisible: YOUR DAILY RHYTHM
+- takeScreenshot: home-after-restart
+- openLink: keylingo://collection
+- assertVisible: Keyboards
+- takeScreenshot: collection
+- openLink: keylingo://settings
+- assertVisible: Settings
+- takeScreenshot: settings
+- openLink: keylingo://practice
+- assertVisible:
+    id: key-ㅅ
+- assertVisible:
+    id: submit-answer
+- takeScreenshot: practice-after-restart

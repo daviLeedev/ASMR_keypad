@@ -1,0 +1,15 @@
+node_modules/
+.expo/
+dist/
+dist-native/
+android/
+ios/
+.env
+.env.local
+*.log
+*.tgz
+package/
+coverage/
+test-results/
+playwright-report/
+.superpowers/

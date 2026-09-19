@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "name": "KeyLingo original engineering seed",
+      "source": "content/seed.ts",
+      "license": "0BSD",
+      "externalDataset": false,
+      "attributionRequired": false,
+      "transformation": "Original pairs expanded into both directions; NFC, case-aware aliases, deduplication and SHA-256 validation.",
+      "packs": [
+        "ko-en-core",
+        "en-ko-core"
+      ]
+    }
+  ]
+}

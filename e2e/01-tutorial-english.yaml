@@ -1,0 +1,74 @@
+appId: com.keylingo.app
+name: Korean interface learns English with the in-app keyboard
+tags:
+  - smoke
+  - onboarding
+---
+# Destructive only to this test app's local data. Use an emulator or test device.
+# Seed IDs ko-en-word-001 (apple), ko-en-word-002 (water), then 001 Recall.
+- launchApp:
+    clearState: true
+- tapOn:
+    id: ui-ko
+- tapOn:
+    id: confirm-language
+- tapOn:
+    id: study-en
+- assertVisible:
+    id: key-a
+# Exercise correction using only the virtual keyboard, never inputText/OS keyboard.
+- tapOn:
+    id: key-x
+- tapOn:
+    id: key-backspace
+- tapOn:
+    id: key-a
+- tapOn:
+    id: key-p
+- tapOn:
+    id: key-p
+- tapOn:
+    id: key-l
+- tapOn:
+    id: key-e
+- tapOn:
+    id: submit-answer
+- assertVisible:
+    id: next-answer
+- tapOn:
+    id: next-answer
+- tapOn:
+    id: key-w
+- tapOn:
+    id: key-a
+- tapOn:
+    id: key-t
+- tapOn:
+    id: key-e
+- tapOn:
+    id: key-r
+- tapOn:
+    id: submit-answer
+- tapOn:
+    id: next-answer
+# Full answer must be absent at the start of Recall.
+- assertNotVisible:
+    text: '^apple$'
+- takeScreenshot: english-recall-before-input
+- tapOn:
+    id: key-a
+- tapOn:
+    id: key-p
+- tapOn:
+    id: key-p
+- tapOn:
+    id: key-l
+- tapOn:
+    id: key-e
+- tapOn:
+    id: submit-answer
+- tapOn:
+    id: next-answer
+- assertNotVisible:
+    id: submit-answer
+- takeScreenshot: english-tutorial-result

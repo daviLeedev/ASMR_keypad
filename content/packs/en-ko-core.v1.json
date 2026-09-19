@@ -1,0 +1,1727 @@
+{
+  "manifest": {
+    "id": "en-ko-core",
+    "version": 1,
+    "schemaVersion": 1,
+    "sourceLanguage": "en",
+    "targetLanguage": "ko",
+    "itemCount": 122,
+    "checksum": "61824f8820e98e4b6e1d6c1f2392d35dc113ed91d9d2d21754f9b6409c8ae26e"
+  },
+  "items": [
+    {
+      "id": "en-ko-word-001",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "apple",
+      "canonicalAnswer": "사과",
+      "acceptedAnswers": [
+        "사과"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-002",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "water",
+      "canonicalAnswer": "물",
+      "acceptedAnswers": [
+        "물"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-003",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "bread",
+      "canonicalAnswer": "빵",
+      "acceptedAnswers": [
+        "빵"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-004",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "milk",
+      "canonicalAnswer": "우유",
+      "acceptedAnswers": [
+        "우유"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-005",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "cooked rice",
+      "canonicalAnswer": "밥",
+      "acceptedAnswers": [
+        "밥"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-006",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "egg",
+      "canonicalAnswer": "달걀",
+      "acceptedAnswers": [
+        "달걀",
+        "계란"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-007",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "cheese",
+      "canonicalAnswer": "치즈",
+      "acceptedAnswers": [
+        "치즈"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-008",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "coffee",
+      "canonicalAnswer": "커피",
+      "acceptedAnswers": [
+        "커피"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-009",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "tea",
+      "canonicalAnswer": "차",
+      "acceptedAnswers": [
+        "차"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-010",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "salt",
+      "canonicalAnswer": "소금",
+      "acceptedAnswers": [
+        "소금"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-011",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "sugar",
+      "canonicalAnswer": "설탕",
+      "acceptedAnswers": [
+        "설탕"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-012",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "soup",
+      "canonicalAnswer": "국",
+      "acceptedAnswers": [
+        "국"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-013",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "banana",
+      "canonicalAnswer": "바나나",
+      "acceptedAnswers": [
+        "바나나"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-014",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "grape",
+      "canonicalAnswer": "포도",
+      "acceptedAnswers": [
+        "포도"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-015",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "strawberry",
+      "canonicalAnswer": "딸기",
+      "acceptedAnswers": [
+        "딸기"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-016",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "orange",
+      "canonicalAnswer": "오렌지",
+      "acceptedAnswers": [
+        "오렌지"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-017",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "lemon",
+      "canonicalAnswer": "레몬",
+      "acceptedAnswers": [
+        "레몬"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-018",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "meat",
+      "canonicalAnswer": "고기",
+      "acceptedAnswers": [
+        "고기"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-019",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "fish (food)",
+      "canonicalAnswer": "생선",
+      "acceptedAnswers": [
+        "생선"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-020",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "chicken (bird)",
+      "canonicalAnswer": "닭",
+      "acceptedAnswers": [
+        "닭"
+      ],
+      "difficulty": "A1",
+      "category": "animals",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-021",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "dog",
+      "canonicalAnswer": "개",
+      "acceptedAnswers": [
+        "개"
+      ],
+      "difficulty": "A1",
+      "category": "animals",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-022",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "cat",
+      "canonicalAnswer": "고양이",
+      "acceptedAnswers": [
+        "고양이"
+      ],
+      "difficulty": "A1",
+      "category": "animals",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-023",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "bird",
+      "canonicalAnswer": "새",
+      "acceptedAnswers": [
+        "새"
+      ],
+      "difficulty": "A1",
+      "category": "animals",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-024",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "horse",
+      "canonicalAnswer": "말",
+      "acceptedAnswers": [
+        "말"
+      ],
+      "difficulty": "A1",
+      "category": "animals",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-025",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "cow",
+      "canonicalAnswer": "소",
+      "acceptedAnswers": [
+        "소"
+      ],
+      "difficulty": "A1",
+      "category": "animals",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-026",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "pig",
+      "canonicalAnswer": "돼지",
+      "acceptedAnswers": [
+        "돼지"
+      ],
+      "difficulty": "A1",
+      "category": "animals",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-027",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "rabbit",
+      "canonicalAnswer": "토끼",
+      "acceptedAnswers": [
+        "토끼"
+      ],
+      "difficulty": "A1",
+      "category": "animals",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-028",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "bear",
+      "canonicalAnswer": "곰",
+      "acceptedAnswers": [
+        "곰"
+      ],
+      "difficulty": "A1",
+      "category": "animals",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-029",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "fox",
+      "canonicalAnswer": "여우",
+      "acceptedAnswers": [
+        "여우"
+      ],
+      "difficulty": "A1",
+      "category": "animals",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-030",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "lion",
+      "canonicalAnswer": "사자",
+      "acceptedAnswers": [
+        "사자"
+      ],
+      "difficulty": "A1",
+      "category": "animals",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-031",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "house",
+      "canonicalAnswer": "집",
+      "acceptedAnswers": [
+        "집"
+      ],
+      "difficulty": "A1",
+      "category": "home",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-032",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "door",
+      "canonicalAnswer": "문",
+      "acceptedAnswers": [
+        "문"
+      ],
+      "difficulty": "A1",
+      "category": "home",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-033",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "window",
+      "canonicalAnswer": "창문",
+      "acceptedAnswers": [
+        "창문"
+      ],
+      "difficulty": "A1",
+      "category": "home",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-034",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "chair",
+      "canonicalAnswer": "의자",
+      "acceptedAnswers": [
+        "의자"
+      ],
+      "difficulty": "A1",
+      "category": "home",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-035",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "desk",
+      "canonicalAnswer": "책상",
+      "acceptedAnswers": [
+        "책상"
+      ],
+      "difficulty": "A1",
+      "category": "home",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-036",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "bed",
+      "canonicalAnswer": "침대",
+      "acceptedAnswers": [
+        "침대"
+      ],
+      "difficulty": "A1",
+      "category": "home",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-037",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "room",
+      "canonicalAnswer": "방",
+      "acceptedAnswers": [
+        "방"
+      ],
+      "difficulty": "A1",
+      "category": "home",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-038",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "kitchen",
+      "canonicalAnswer": "부엌",
+      "acceptedAnswers": [
+        "부엌",
+        "주방"
+      ],
+      "difficulty": "A1",
+      "category": "home",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-039",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "book",
+      "canonicalAnswer": "책",
+      "acceptedAnswers": [
+        "책"
+      ],
+      "difficulty": "A1",
+      "category": "study",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-040",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "pencil",
+      "canonicalAnswer": "연필",
+      "acceptedAnswers": [
+        "연필"
+      ],
+      "difficulty": "A1",
+      "category": "study",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-041",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "paper",
+      "canonicalAnswer": "종이",
+      "acceptedAnswers": [
+        "종이"
+      ],
+      "difficulty": "A1",
+      "category": "study",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-042",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "school",
+      "canonicalAnswer": "학교",
+      "acceptedAnswers": [
+        "학교"
+      ],
+      "difficulty": "A1",
+      "category": "study",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-043",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "student",
+      "canonicalAnswer": "학생",
+      "acceptedAnswers": [
+        "학생"
+      ],
+      "difficulty": "A1",
+      "category": "study",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-044",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "teacher",
+      "canonicalAnswer": "선생님",
+      "acceptedAnswers": [
+        "선생님"
+      ],
+      "difficulty": "A1",
+      "category": "study",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-045",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "friend",
+      "canonicalAnswer": "친구",
+      "acceptedAnswers": [
+        "친구"
+      ],
+      "difficulty": "A1",
+      "category": "people",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-046",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "family",
+      "canonicalAnswer": "가족",
+      "acceptedAnswers": [
+        "가족"
+      ],
+      "difficulty": "A1",
+      "category": "people",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-047",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "mom",
+      "canonicalAnswer": "엄마",
+      "acceptedAnswers": [
+        "엄마",
+        "어머니"
+      ],
+      "difficulty": "A1",
+      "category": "people",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-048",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "dad",
+      "canonicalAnswer": "아빠",
+      "acceptedAnswers": [
+        "아빠",
+        "아버지"
+      ],
+      "difficulty": "A1",
+      "category": "people",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-049",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "child",
+      "canonicalAnswer": "아이",
+      "acceptedAnswers": [
+        "아이"
+      ],
+      "difficulty": "A1",
+      "category": "people",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-050",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "person",
+      "canonicalAnswer": "사람",
+      "acceptedAnswers": [
+        "사람"
+      ],
+      "difficulty": "A1",
+      "category": "people",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-051",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "sky",
+      "canonicalAnswer": "하늘",
+      "acceptedAnswers": [
+        "하늘"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-052",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "sun",
+      "canonicalAnswer": "해",
+      "acceptedAnswers": [
+        "해",
+        "태양"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-053",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "moon",
+      "canonicalAnswer": "달",
+      "acceptedAnswers": [
+        "달"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-054",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "star",
+      "canonicalAnswer": "별",
+      "acceptedAnswers": [
+        "별"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-055",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "rain",
+      "canonicalAnswer": "비",
+      "acceptedAnswers": [
+        "비"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-056",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "snow",
+      "canonicalAnswer": "눈",
+      "acceptedAnswers": [
+        "눈"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-057",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "wind",
+      "canonicalAnswer": "바람",
+      "acceptedAnswers": [
+        "바람"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-058",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "cloud",
+      "canonicalAnswer": "구름",
+      "acceptedAnswers": [
+        "구름"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-059",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "tree",
+      "canonicalAnswer": "나무",
+      "acceptedAnswers": [
+        "나무"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-060",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "flower",
+      "canonicalAnswer": "꽃",
+      "acceptedAnswers": [
+        "꽃"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-061",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "mountain",
+      "canonicalAnswer": "산",
+      "acceptedAnswers": [
+        "산"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-062",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "river",
+      "canonicalAnswer": "강",
+      "acceptedAnswers": [
+        "강"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-063",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "sea",
+      "canonicalAnswer": "바다",
+      "acceptedAnswers": [
+        "바다"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-064",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "forest",
+      "canonicalAnswer": "숲",
+      "acceptedAnswers": [
+        "숲"
+      ],
+      "difficulty": "A1",
+      "category": "nature",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-065",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "road",
+      "canonicalAnswer": "길",
+      "acceptedAnswers": [
+        "길"
+      ],
+      "difficulty": "A1",
+      "category": "places",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-066",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "park",
+      "canonicalAnswer": "공원",
+      "acceptedAnswers": [
+        "공원"
+      ],
+      "difficulty": "A1",
+      "category": "places",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-067",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "shop",
+      "canonicalAnswer": "가게",
+      "acceptedAnswers": [
+        "가게"
+      ],
+      "difficulty": "A1",
+      "category": "places",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-068",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "hospital",
+      "canonicalAnswer": "병원",
+      "acceptedAnswers": [
+        "병원"
+      ],
+      "difficulty": "A1",
+      "category": "places",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-069",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "airport",
+      "canonicalAnswer": "공항",
+      "acceptedAnswers": [
+        "공항"
+      ],
+      "difficulty": "A1",
+      "category": "places",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-070",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "station",
+      "canonicalAnswer": "역",
+      "acceptedAnswers": [
+        "역"
+      ],
+      "difficulty": "A1",
+      "category": "places",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-071",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "train",
+      "canonicalAnswer": "기차",
+      "acceptedAnswers": [
+        "기차"
+      ],
+      "difficulty": "A1",
+      "category": "travel",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-072",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "bus",
+      "canonicalAnswer": "버스",
+      "acceptedAnswers": [
+        "버스"
+      ],
+      "difficulty": "A1",
+      "category": "travel",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-073",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "bicycle",
+      "canonicalAnswer": "자전거",
+      "acceptedAnswers": [
+        "자전거"
+      ],
+      "difficulty": "A1",
+      "category": "travel",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-074",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "car",
+      "canonicalAnswer": "자동차",
+      "acceptedAnswers": [
+        "자동차"
+      ],
+      "difficulty": "A1",
+      "category": "travel",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-075",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "boat",
+      "canonicalAnswer": "배",
+      "acceptedAnswers": [
+        "배"
+      ],
+      "difficulty": "A1",
+      "category": "travel",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-076",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "airplane",
+      "canonicalAnswer": "비행기",
+      "acceptedAnswers": [
+        "비행기"
+      ],
+      "difficulty": "A1",
+      "category": "travel",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-077",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "today",
+      "canonicalAnswer": "오늘",
+      "acceptedAnswers": [
+        "오늘"
+      ],
+      "difficulty": "A1",
+      "category": "time",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-078",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "tomorrow",
+      "canonicalAnswer": "내일",
+      "acceptedAnswers": [
+        "내일"
+      ],
+      "difficulty": "A1",
+      "category": "time",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-079",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "yesterday",
+      "canonicalAnswer": "어제",
+      "acceptedAnswers": [
+        "어제"
+      ],
+      "difficulty": "A1",
+      "category": "time",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-080",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "morning",
+      "canonicalAnswer": "아침",
+      "acceptedAnswers": [
+        "아침"
+      ],
+      "difficulty": "A1",
+      "category": "time",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-081",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "evening",
+      "canonicalAnswer": "저녁",
+      "acceptedAnswers": [
+        "저녁"
+      ],
+      "difficulty": "A1",
+      "category": "time",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-082",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "night",
+      "canonicalAnswer": "밤",
+      "acceptedAnswers": [
+        "밤"
+      ],
+      "difficulty": "A1",
+      "category": "time",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-083",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "life",
+      "canonicalAnswer": "삶",
+      "acceptedAnswers": [
+        "삶"
+      ],
+      "difficulty": "A1",
+      "category": "abstract",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-084",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "price",
+      "canonicalAnswer": "값",
+      "acceptedAnswers": [
+        "값"
+      ],
+      "difficulty": "A1",
+      "category": "shopping",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-085",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "fruit",
+      "canonicalAnswer": "과일",
+      "acceptedAnswers": [
+        "과일"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-086",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "ear",
+      "canonicalAnswer": "귀",
+      "acceptedAnswers": [
+        "귀"
+      ],
+      "difficulty": "A1",
+      "category": "body",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-087",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "hand",
+      "canonicalAnswer": "손",
+      "acceptedAnswers": [
+        "손"
+      ],
+      "difficulty": "A1",
+      "category": "body",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-088",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "foot",
+      "canonicalAnswer": "발",
+      "acceptedAnswers": [
+        "발"
+      ],
+      "difficulty": "A1",
+      "category": "body",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-089",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "mouth",
+      "canonicalAnswer": "입",
+      "acceptedAnswers": [
+        "입"
+      ],
+      "difficulty": "A1",
+      "category": "body",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-090",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "nose",
+      "canonicalAnswer": "코",
+      "acceptedAnswers": [
+        "코"
+      ],
+      "difficulty": "A1",
+      "category": "body",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-091",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "color",
+      "canonicalAnswer": "색",
+      "acceptedAnswers": [
+        "색"
+      ],
+      "difficulty": "A1",
+      "category": "everyday",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-word-092",
+      "kind": "WORD",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "clothes",
+      "canonicalAnswer": "옷",
+      "acceptedAnswers": [
+        "옷"
+      ],
+      "difficulty": "A1",
+      "category": "everyday",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-001",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "hello",
+      "canonicalAnswer": "안녕하세요",
+      "acceptedAnswers": [
+        "안녕하세요"
+      ],
+      "difficulty": "A1",
+      "category": "greetings",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-002",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "thank you",
+      "canonicalAnswer": "감사합니다",
+      "acceptedAnswers": [
+        "감사합니다",
+        "고맙습니다"
+      ],
+      "difficulty": "A1",
+      "category": "greetings",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-003",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "goodbye (to someone leaving)",
+      "canonicalAnswer": "안녕히 가세요",
+      "acceptedAnswers": [
+        "안녕히 가세요"
+      ],
+      "difficulty": "A1",
+      "category": "greetings",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-004",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "it is okay",
+      "canonicalAnswer": "괜찮아요",
+      "acceptedAnswers": [
+        "괜찮아요"
+      ],
+      "difficulty": "A1",
+      "category": "greetings",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-005",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "i need water",
+      "canonicalAnswer": "물이 필요해요",
+      "acceptedAnswers": [
+        "물이 필요해요"
+      ],
+      "difficulty": "A1",
+      "category": "needs",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-006",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "i am hungry",
+      "canonicalAnswer": "배가 고파요",
+      "acceptedAnswers": [
+        "배가 고파요"
+      ],
+      "difficulty": "A1",
+      "category": "needs",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-007",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "i am thirsty",
+      "canonicalAnswer": "목이 말라요",
+      "acceptedAnswers": [
+        "목이 말라요"
+      ],
+      "difficulty": "A1",
+      "category": "needs",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-008",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "i am tired",
+      "canonicalAnswer": "피곤해요",
+      "acceptedAnswers": [
+        "피곤해요"
+      ],
+      "difficulty": "A1",
+      "category": "needs",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-009",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "i like apples",
+      "canonicalAnswer": "사과를 좋아해요",
+      "acceptedAnswers": [
+        "사과를 좋아해요"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-010",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "i drink coffee",
+      "canonicalAnswer": "커피를 마셔요",
+      "acceptedAnswers": [
+        "커피를 마셔요"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-011",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "i eat bread",
+      "canonicalAnswer": "빵을 먹어요",
+      "acceptedAnswers": [
+        "빵을 먹어요"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-012",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "i have milk",
+      "canonicalAnswer": "우유가 있어요",
+      "acceptedAnswers": [
+        "우유가 있어요"
+      ],
+      "difficulty": "A1",
+      "category": "food",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-013",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "it is cold today",
+      "canonicalAnswer": "오늘은 추워요",
+      "acceptedAnswers": [
+        "오늘은 추워요"
+      ],
+      "difficulty": "A1",
+      "category": "weather",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-014",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "it is hot today",
+      "canonicalAnswer": "오늘은 더워요",
+      "acceptedAnswers": [
+        "오늘은 더워요"
+      ],
+      "difficulty": "A1",
+      "category": "weather",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-015",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "it is raining",
+      "canonicalAnswer": "비가 와요",
+      "acceptedAnswers": [
+        "비가 와요"
+      ],
+      "difficulty": "A1",
+      "category": "weather",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-016",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "the sky is blue",
+      "canonicalAnswer": "하늘이 파래요",
+      "acceptedAnswers": [
+        "하늘이 파래요"
+      ],
+      "difficulty": "A1",
+      "category": "weather",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-017",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "i go to school",
+      "canonicalAnswer": "학교에 가요",
+      "acceptedAnswers": [
+        "학교에 가요"
+      ],
+      "difficulty": "A1",
+      "category": "daily",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-018",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "i am at home",
+      "canonicalAnswer": "집에 있어요",
+      "acceptedAnswers": [
+        "집에 있어요"
+      ],
+      "difficulty": "A1",
+      "category": "daily",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-019",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "i read a book",
+      "canonicalAnswer": "책을 읽어요",
+      "acceptedAnswers": [
+        "책을 읽어요"
+      ],
+      "difficulty": "A1",
+      "category": "daily",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-020",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "i learn korean",
+      "canonicalAnswer": "한국어를 배워요",
+      "acceptedAnswers": [
+        "한국어를 배워요"
+      ],
+      "difficulty": "A1",
+      "category": "study",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-021",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "i learn english",
+      "canonicalAnswer": "영어를 배워요",
+      "acceptedAnswers": [
+        "영어를 배워요"
+      ],
+      "difficulty": "A1",
+      "category": "study",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-022",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "please open the door",
+      "canonicalAnswer": "문을 열어 주세요",
+      "acceptedAnswers": [
+        "문을 열어 주세요"
+      ],
+      "difficulty": "A1",
+      "category": "requests",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-023",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "please sit down",
+      "canonicalAnswer": "앉아 주세요",
+      "acceptedAnswers": [
+        "앉아 주세요"
+      ],
+      "difficulty": "A1",
+      "category": "requests",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-024",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "please speak slowly",
+      "canonicalAnswer": "천천히 말해 주세요",
+      "acceptedAnswers": [
+        "천천히 말해 주세요"
+      ],
+      "difficulty": "A1",
+      "category": "requests",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-025",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "please say it again",
+      "canonicalAnswer": "다시 말해 주세요",
+      "acceptedAnswers": [
+        "다시 말해 주세요"
+      ],
+      "difficulty": "A1",
+      "category": "requests",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-026",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "what is your name",
+      "canonicalAnswer": "이름이 뭐예요",
+      "acceptedAnswers": [
+        "이름이 뭐예요"
+      ],
+      "difficulty": "A1",
+      "category": "questions",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-027",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "how much is it",
+      "canonicalAnswer": "얼마예요",
+      "acceptedAnswers": [
+        "얼마예요"
+      ],
+      "difficulty": "A1",
+      "category": "questions",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-028",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "where is the station",
+      "canonicalAnswer": "역이 어디예요",
+      "acceptedAnswers": [
+        "역이 어디예요"
+      ],
+      "difficulty": "A1",
+      "category": "questions",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-029",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "see you tomorrow",
+      "canonicalAnswer": "내일 만나요",
+      "acceptedAnswers": [
+        "내일 만나요"
+      ],
+      "difficulty": "A1",
+      "category": "greetings",
+      "contentPackId": "en-ko-core"
+    },
+    {
+      "id": "en-ko-sentence-030",
+      "kind": "SENTENCE",
+      "sourceLanguage": "en",
+      "targetLanguage": "ko",
+      "prompt": "have a nice day",
+      "canonicalAnswer": "좋은 하루 보내세요",
+      "acceptedAnswers": [
+        "좋은 하루 보내세요"
+      ],
+      "difficulty": "A1",
+      "category": "greetings",
+      "contentPackId": "en-ko-core"
+    }
+  ]
+}

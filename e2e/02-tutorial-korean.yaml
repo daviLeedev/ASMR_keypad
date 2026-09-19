@@ -1,0 +1,69 @@
+appId: com.keylingo.app
+name: English interface learns Korean with Dubeolsik composition
+tags:
+  - smoke
+  - onboarding
+  - korean
+---
+# Seed IDs en-ko-word-001 (사과), en-ko-word-002 (물), then 001 Recall.
+# Key IDs use the visible Korean jamo on the Dubeolsik layout.
+- launchApp:
+    clearState: true
+- tapOn:
+    id: ui-en
+- tapOn:
+    id: confirm-language
+- tapOn:
+    id: study-ko
+# t k r h k = ㅅ ㅏ ㄱ ㅗ ㅏ = 사과 (compound vowel ㅘ).
+- tapOn:
+    id: key-ㅅ
+- tapOn:
+    id: key-ㅏ
+- tapOn:
+    id: key-ㄱ
+- tapOn:
+    id: key-ㅗ
+- tapOn:
+    id: key-ㅏ
+- tapOn:
+    id: submit-answer
+- assertVisible: Nicely done
+- tapOn:
+    id: next-answer
+# a n f = ㅁ ㅜ ㄹ = 물. Backspace removes ㄹ and retyping restores 물.
+- tapOn:
+    id: key-ㅁ
+- tapOn:
+    id: key-ㅜ
+- tapOn:
+    id: key-ㄹ
+- tapOn:
+    id: key-backspace
+- tapOn:
+    id: key-ㄹ
+- tapOn:
+    id: submit-answer
+- assertVisible: Nicely done
+- tapOn:
+    id: next-answer
+- assertNotVisible:
+    text: '^사과$'
+- takeScreenshot: korean-recall-before-input
+- tapOn:
+    id: key-ㅅ
+- tapOn:
+    id: key-ㅏ
+- tapOn:
+    id: key-ㄱ
+- tapOn:
+    id: key-ㅗ
+- tapOn:
+    id: key-ㅏ
+- tapOn:
+    id: submit-answer
+- assertVisible: Nicely done
+- tapOn:
+    id: next-answer
+- assertVisible: Practice, made progress.
+- takeScreenshot: korean-tutorial-result
