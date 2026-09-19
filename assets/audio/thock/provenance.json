@@ -1,0 +1,211 @@
+{
+  "themeId": "thock",
+  "identity": "Deep Thock",
+  "source": "Holy Panda (holypanda, kbsim)",
+  "sourceUrl": "https://github.com/tplai/kbsim/tree/ba103f3b0afa9dab80447aa2e7e2ed80b6bd80e4/src/assets/audio/holypanda",
+  "commit": "ba103f3b0afa9dab80447aa2e7e2ed80b6bd80e4",
+  "license": "MIT",
+  "licenseText": "Copyright (c) Thomas Lai\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+  "author": "Thomas Lai",
+  "downloadedAt": "2026-09-19T17:16:24.9436645Z",
+  "allowFiveNormalPress": true,
+  "processing": {
+    "tool": "ffmpeg",
+    "format": "mono PCM WAV, 48 kHz, 16-bit",
+    "notes": "Standard KeyLingo physical audio processing with phase-specific tail caps."
+  },
+  "files": [
+    {
+      "source": "press/GENERIC_R0.mp3",
+      "phase": "press",
+      "category": "normal",
+      "output": "press/normal_01.wav",
+      "sourceSha256": "79b2811f3061c406ac9dcf802ae83d68f5fac78f8ed588a515e2550d2fcd05df",
+      "sha256": "25f96f477a0d3f771e224417a50ed0b957f7a7d610286008b9908ec2cb5ae917",
+      "filters": [
+        "highpass=f=25",
+        "silenceremove=start_periods=1:start_duration=0:start_threshold=-52dB",
+        "atrim=duration=0.068322",
+        "afade=t=in:d=0.002",
+        "afade=t=out:st=0.063322:d=0.005",
+        "alimiter=limit=0.7079:level=false:latency=true"
+      ]
+    },
+    {
+      "source": "press/GENERIC_R1.mp3",
+      "phase": "press",
+      "category": "normal",
+      "output": "press/normal_02.wav",
+      "sourceSha256": "cb9aefe55a81c48d6680d2ab8960220c20439e31ba1e32fd570106ed15c7fd40",
+      "sha256": "d48605cb3e21c40bbd51695059ee575872906e679a308e024446c53057de7fe0",
+      "filters": [
+        "highpass=f=25",
+        "silenceremove=start_periods=1:start_duration=0:start_threshold=-52dB",
+        "atrim=duration=0.068322",
+        "afade=t=in:d=0.002",
+        "afade=t=out:st=0.063322:d=0.005",
+        "alimiter=limit=0.7079:level=false:latency=true"
+      ]
+    },
+    {
+      "source": "press/GENERIC_R2.mp3",
+      "phase": "press",
+      "category": "normal",
+      "output": "press/normal_03.wav",
+      "sourceSha256": "d346d76ef4c32f09be58556ccce843d7a88199214f9ebfdbf8b95226faf7ba3e",
+      "sha256": "ab4aebc0238c23fdb1bf1d214cb1f4bc3a246094d20f0f3033cd62b4609f0b2a",
+      "filters": [
+        "highpass=f=25",
+        "silenceremove=start_periods=1:start_duration=0:start_threshold=-52dB",
+        "atrim=duration=0.068322",
+        "afade=t=in:d=0.002",
+        "afade=t=out:st=0.063322:d=0.005",
+        "alimiter=limit=0.7079:level=false:latency=true"
+      ]
+    },
+    {
+      "source": "press/GENERIC_R3.mp3",
+      "phase": "press",
+      "category": "normal",
+      "output": "press/normal_04.wav",
+      "sourceSha256": "4141524713fc19942166866c093777351f6f122acb9d79c7503981a5b906c7dc",
+      "sha256": "ba4d31bda5b093ac1f96b88171b6a0476be64116764dda05b50f5d293dbe8077",
+      "filters": [
+        "highpass=f=25",
+        "silenceremove=start_periods=1:start_duration=0:start_threshold=-52dB",
+        "atrim=duration=0.068322",
+        "afade=t=in:d=0.002",
+        "afade=t=out:st=0.063322:d=0.005",
+        "alimiter=limit=0.7079:level=false:latency=true"
+      ]
+    },
+    {
+      "source": "press/GENERIC_R4.mp3",
+      "phase": "press",
+      "category": "normal",
+      "output": "press/normal_05.wav",
+      "sourceSha256": "60ac51060cc0f1880016be2dffa05d3e3cf928290df37be998fb081bdf1ea66f",
+      "sha256": "cc4ec19381cc61125581630fa8f3226e1becf0abc2f094ec69e54cfa580bc9d9",
+      "filters": [
+        "highpass=f=25",
+        "silenceremove=start_periods=1:start_duration=0:start_threshold=-52dB",
+        "atrim=duration=0.068322",
+        "afade=t=in:d=0.002",
+        "afade=t=out:st=0.063322:d=0.005",
+        "alimiter=limit=0.7079:level=false:latency=true"
+      ]
+    },
+    {
+      "source": "press/SPACE.mp3",
+      "phase": "press",
+      "category": "space",
+      "output": "press/space_01.wav",
+      "sourceSha256": "bcba046d707877095ff2fc6d031091348515f9a6f724ee73c029831d105b71a6",
+      "sha256": "83442dfe4da9b6461c822f86cf2df5373ea057ef4f97095072dedf01a0435f7b",
+      "filters": [
+        "highpass=f=25",
+        "silenceremove=start_periods=1:start_duration=0:start_threshold=-52dB",
+        "atrim=duration=0.145000",
+        "afade=t=in:d=0.002",
+        "afade=t=out:st=0.140000:d=0.005",
+        "alimiter=limit=0.7079:level=false:latency=true"
+      ]
+    },
+    {
+      "source": "press/ENTER.mp3",
+      "phase": "press",
+      "category": "enter",
+      "output": "press/enter_01.wav",
+      "sourceSha256": "56d78f9b2b662ddd07255e2e130410536a0e877bdc639fef7e205edfd73558a1",
+      "sha256": "ea2c074093c17916b962eef5f998dfc90e806065d4b0eb63455c8c0cbb517690",
+      "filters": [
+        "highpass=f=25",
+        "silenceremove=start_periods=1:start_duration=0:start_threshold=-52dB",
+        "atrim=duration=0.066100",
+        "afade=t=in:d=0.002",
+        "afade=t=out:st=0.061100:d=0.005",
+        "alimiter=limit=0.7079:level=false:latency=true"
+      ]
+    },
+    {
+      "source": "press/BACKSPACE.mp3",
+      "phase": "press",
+      "category": "backspace",
+      "output": "press/backspace_01.wav",
+      "sourceSha256": "293a4fb1ab19605348018c2e8fea805ef9454963aa69e2d26a06ed7217636889",
+      "sha256": "cbd967afc3d2455fc5b27eaf25d384a64a2eb918f39f799ff0f5982339312048",
+      "filters": [
+        "highpass=f=25",
+        "silenceremove=start_periods=1:start_duration=0:start_threshold=-52dB",
+        "atrim=duration=0.068254",
+        "afade=t=in:d=0.002",
+        "afade=t=out:st=0.063254:d=0.005",
+        "alimiter=limit=0.7079:level=false:latency=true"
+      ]
+    },
+    {
+      "source": "release/GENERIC.mp3",
+      "phase": "release",
+      "category": "normal",
+      "output": "release/normal_01.wav",
+      "sourceSha256": "9b0859c4ccb2adabdd9e9447aa0684f3ba12f59551aaf1a4d867d458d4ca56b1",
+      "sha256": "2ac46bf76610ec8a5bf2b4b564ff489a863106418409d4584077e384d072f1f8",
+      "filters": [
+        "highpass=f=25",
+        "silenceremove=start_periods=1:start_duration=0:start_threshold=-52dB",
+        "atrim=duration=0.052630",
+        "afade=t=in:d=0.002",
+        "afade=t=out:st=0.047630:d=0.005",
+        "alimiter=limit=0.7079:level=false:latency=true"
+      ]
+    },
+    {
+      "source": "release/SPACE.mp3",
+      "phase": "release",
+      "category": "space",
+      "output": "release/space_01.wav",
+      "sourceSha256": "980bfca97b89f2dc114f23cdb440c956a62137430d5e22682e011d16d43f2153",
+      "sha256": "3d3b9c170e6cf802af0c8937aa0e129d4ab9d2df0ad2be291a7aea3655d3cffc",
+      "filters": [
+        "highpass=f=25",
+        "silenceremove=start_periods=1:start_duration=0:start_threshold=-52dB",
+        "atrim=duration=0.014195",
+        "afade=t=in:d=0.002",
+        "afade=t=out:st=0.009195:d=0.005",
+        "alimiter=limit=0.7079:level=false:latency=true"
+      ]
+    },
+    {
+      "source": "release/ENTER.mp3",
+      "phase": "release",
+      "category": "enter",
+      "output": "release/enter_01.wav",
+      "sourceSha256": "be0f86e85d17dce47a607960c37eb54240ff1648b8eb54b6293cb8beb38c17ed",
+      "sha256": "f6c1e4ed779b618c3916aecb1a31b1ef90c8e942997436e905353d0ec0bea241",
+      "filters": [
+        "highpass=f=25",
+        "silenceremove=start_periods=1:start_duration=0:start_threshold=-52dB",
+        "atrim=duration=0.019660",
+        "afade=t=in:d=0.002",
+        "afade=t=out:st=0.014660:d=0.005",
+        "alimiter=limit=0.7079:level=false:latency=true"
+      ]
+    },
+    {
+      "source": "release/BACKSPACE.mp3",
+      "phase": "release",
+      "category": "backspace",
+      "output": "release/backspace_01.wav",
+      "sourceSha256": "dd092c78c99322f3bf9c45c2095a91e6a91450889f2a0976fb9858397b360c06",
+      "sha256": "2d80eb36def8a2daa7985a158a3c4e39c4e363a0db8f60b83dc945bd71344c0a",
+      "filters": [
+        "highpass=f=25",
+        "silenceremove=start_periods=1:start_duration=0:start_threshold=-52dB",
+        "atrim=duration=0.049229",
+        "afade=t=in:d=0.002",
+        "afade=t=out:st=0.044229:d=0.005",
+        "alimiter=limit=0.7079:level=false:latency=true"
+      ]
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import {
   motion,
   themes,
 } from "../src/design-system/theme";
+import { audioCredits } from "../src/audio/credits";
 
 test("every keyboard theme exposes a complete non-empty 3D surface", () => {
   for (const theme of themes) {
@@ -33,4 +34,15 @@ test("keyboard sizing remains usable from compact phones through the width cap",
   expect(motion.pressMs).toBeLessThan(motion.releaseMs);
   expect(motion.feedbackMs).toBeGreaterThan(motion.releaseMs);
   expect(getTheme("missing").id).toBe("starter");
+});
+
+test("every keyboard exposes an honest audio identity and three traits", () => {
+  const creditedThemes = new Set(audioCredits.map((credit) => credit.themeId));
+  for (const theme of themes) {
+    expect(theme.audioIdentity).toEqual(expect.any(String));
+    expect(theme.audioIdentity.length).toBeGreaterThan(0);
+    expect(theme.audioTraits).toHaveLength(3);
+    expect(theme.audioTraits.every(Boolean)).toBe(true);
+    if (theme.id !== "silent") expect(creditedThemes).toContain(theme.id);
+  }
 });

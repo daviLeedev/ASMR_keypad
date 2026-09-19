@@ -65,7 +65,8 @@ function processEntry(entry, sourceRoot, outputRoot) {
   if (!Number.isFinite(sourceDuration) || sourceDuration <= 0) {
     throw new Error(`could not probe ${source}`);
   }
-  const maximum = entry.phase === "press" ? 0.145 : 0.11;
+  const maximum =
+    entry.maxDuration ?? (entry.phase === "press" ? 0.145 : 0.11);
   const targetDuration = Math.min(sourceDuration, maximum);
   const fadeStart = Math.max(0.002, targetDuration - 0.005);
   const filters = [
@@ -115,7 +116,18 @@ function main() {
   }
   mkdirSync(outputRoot, { recursive: true });
   const files = manifest.entries.map((entry) =>
-    processEntry(entry, sourceRoot, outputRoot),
+    processEntry(
+      {
+        ...entry,
+        maxDuration:
+          entry.maxDuration ??
+          (entry.phase === "press"
+            ? manifest.maxPressDuration
+            : manifest.maxReleaseDuration),
+      },
+      sourceRoot,
+      outputRoot,
+    ),
   );
   const provenance = {
     themeId: manifest.themeId,

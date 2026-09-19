@@ -127,6 +127,12 @@ const en = {
   progress: "Progress",
   reminderOn: "Reminder scheduled",
   saving: "Saving…",
+  audioCredits: "Audio credits",
+  audioCreditsTitle: "The recordings behind every switch.",
+  audioCreditsBody:
+    "These physical keyboard samples are bundled for offline play under their original licenses.",
+  audioLegacyNote:
+    "Quiet Cloud currently uses the original KeyLingo sound while we source a cleared damped recording.",
 };
 const ko: Record<keyof typeof en, string> = {
   tagline: "짧은 연습, 기분 좋은 리듬.",
@@ -253,6 +259,12 @@ const ko: Record<keyof typeof en, string> = {
   progress: "진행 상황",
   reminderOn: "알림 예약 완료",
   saving: "저장 중…",
+  audioCredits: "오디오 크레딧",
+  audioCreditsTitle: "각 키보드 축의 실제 녹음 출처",
+  audioCreditsBody:
+    "실제 키보드 샘플은 원본 라이선스와 함께 앱에 포함되어 오프라인으로 재생돼요.",
+  audioLegacyNote:
+    "Quiet Cloud는 라이선스가 확인된 저소음 녹음을 확보할 때까지 기존 KeyLingo 소리를 사용해요.",
 };
 void i18n.use(initReactI18next).init({
   resources: { en: { translation: en }, ko: { translation: ko } },

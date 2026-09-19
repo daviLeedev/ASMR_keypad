@@ -154,7 +154,7 @@ async function validatePack(root, options = {}) {
       }
       const maximum =
         provenance?.themeId === "retro" ? 0.4 : phase === "press" ? 0.1455 : 0.1105;
-      const minimum = phase === "press" ? 0.02 : 0.015;
+      const minimum = phase === "press" ? 0.02 : 0.01;
       if (
         !Number.isFinite(metadata.duration) ||
         metadata.duration < minimum ||

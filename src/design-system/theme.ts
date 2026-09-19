@@ -39,6 +39,8 @@ export interface KeyboardTheme {
   id: string;
   name: string;
   descriptor: string;
+  audioIdentity: string;
+  audioTraits: readonly [string, string, string];
   base: string;
   key: string;
   ink: string;
@@ -52,6 +54,8 @@ export const themes: KeyboardTheme[] = [
     id: "starter",
     name: "Starter",
     descriptor: "Light · Balanced",
+    audioIdentity: "Brown Tactile",
+    audioTraits: ["Tactile", "Rounded", "Medium"],
     base: "#E0EDF8",
     key: "#FFFFFF",
     ink: "#153975",
@@ -73,6 +77,8 @@ export const themes: KeyboardTheme[] = [
     id: "clicky",
     name: "Clicky Blue",
     descriptor: "Crisp · Bright",
+    audioIdentity: "Blue Click",
+    audioTraits: ["Clicky", "Bright", "Crisp"],
     base: "#D3E5F6",
     key: "#EAF6FF",
     ink: "#16497C",
@@ -94,6 +100,8 @@ export const themes: KeyboardTheme[] = [
     id: "creamy",
     name: "Creamy",
     descriptor: "Soft · Rounded",
+    audioIdentity: "Cream Linear",
+    audioTraits: ["Linear", "Rounded", "Smooth"],
     base: "#E9E0CF",
     key: "#FFFAED",
     ink: "#665138",
@@ -115,6 +123,8 @@ export const themes: KeyboardTheme[] = [
     id: "thock",
     name: "Deep Thock",
     descriptor: "Deep · Resonant",
+    audioIdentity: "Deep Thock",
+    audioTraits: ["Tactile", "Deep", "Resonant"],
     base: "#293A49",
     key: "#415A69",
     ink: "#F5F9F8",
@@ -136,6 +146,8 @@ export const themes: KeyboardTheme[] = [
     id: "retro",
     name: "Retro",
     descriptor: "Warm · Vintage",
+    audioIdentity: "Buckling Spring",
+    audioTraits: ["Spring", "Metallic", "Vintage"],
     base: "#DDDACE",
     key: "#F5F0E5",
     ink: "#495B54",
@@ -157,6 +169,8 @@ export const themes: KeyboardTheme[] = [
     id: "silent",
     name: "Silent",
     descriptor: "Quiet · Minimal",
+    audioIdentity: "Quiet Cloud",
+    audioTraits: ["Damped", "Soft", "Quiet"],
     base: "#E5E9EC",
     key: "#FAFAFA",
     ink: "#505C69",
@@ -178,6 +192,8 @@ export const themes: KeyboardTheme[] = [
     id: "sky",
     name: "Sky 65",
     descriptor: "Airy · Clear",
+    audioIdentity: "Airy Linear",
+    audioTraits: ["Linear", "Airy", "Clear"],
     base: "#C5DEF5",
     key: "#F2FAFF",
     ink: "#23528B",
@@ -199,6 +215,8 @@ export const themes: KeyboardTheme[] = [
     id: "midnight",
     name: "Midnight",
     descriptor: "Low · Smooth",
+    audioIdentity: "Heavy Linear",
+    audioTraits: ["Linear", "Low", "Weighty"],
     base: "#202B44",
     key: "#354263",
     ink: "#EAF3FF",

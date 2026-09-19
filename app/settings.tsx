@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, Switch, Pressable } from "react-native";
+import { router } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import {
@@ -205,6 +206,22 @@ export default function Settings() {
           ))}
         </View>
       </Card>
+      <Pressable
+        testID="open-audio-credits"
+        accessibilityRole="button"
+        onPress={() => router.push("/audio-credits")}
+        style={[
+          styles.spread,
+          {
+            minHeight: 52,
+            borderBottomWidth: 1,
+            borderBottomColor: colors.border,
+          },
+        ]}
+      >
+        <Label>{t("audioCredits")}</Label>
+        <Label muted>›</Label>
+      </Pressable>
       <Card>
         <Text style={styles.subtitle}>{t("starterPack")}</Text>
         <Label muted>
